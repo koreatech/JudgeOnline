@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title><?php echo $view_title?></title>
-	<link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
+  <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 </head>
 
 <body>
@@ -151,5 +152,6 @@ echo "<tr id=pie bgcolor=#D7EBFF><td>Statistics<td><div id='PieDiv' style='posit
 </div><!--end foot-->
 </div><!--end main-->
 </div><!--end wrapper-->
+	<?php require_once("include-bottom.php");?>
 </body>
 </html>

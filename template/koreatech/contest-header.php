@@ -7,16 +7,15 @@
        <span class="icon-bar"></span>
        <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo $OJ_HOME?>">Judge</a>
+      <a class="navbar-brand" href="contest.php"">Contest</a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav">
-      <li <?php if ($navigation_tab == "problem") echo "class='active'"?>><a href="problemset.php"><?php echo $MSG_PROBLEMS?></a></li>
-      <li <?php if ($navigation_tab == "status") echo "class='active'"?>><a href="status.php"><?php echo $MSG_STATUS?></a></li>
-      <li <?php if ($navigation_tab == "ranklist") echo "class='active'"?>><a href="ranklist.php"><?php echo $MSG_RANKLIST?></a></li>
-      <li <?php if ($navigation_tab == "contest") echo "class='active'"?>><a href="contest.php"><?php echo $MSG_CONTEST?></a></li>
-      <li <?php if ($navigation_tab == "faqs") echo "class='active'"?>><a href="faqs.php"><?php echo $MSG_FAQ?></a></li>
-      <!-- <?php echo $url;?>
+      <li <?php if ($navigation_tab == "problem") echo "class='active'"?>><a href="contest.php?cid=<?php echo $cid?>"><?php echo $MSG_PROBLEMS?></a></li>
+      <li <?php if ($navigation_tab == "ranklist") echo "class='active'"?>><a href="contestrank.php?cid=<?php echo $cid?>"><?php echo $MSG_STANDING?></a></li>
+      <li <?php if ($navigation_tab == "status") echo "class='active'"?>><a href="status.php?cid=<?php echo $cid?>"><?php echo $MSG_STATUS?></a></li>
+      <li <?php if ($navigation_tab == "statistics") echo "class='active'"?>><a href="conteststatistics.php?cid=<?php echo $cid;?>"><?php echo $MSG_STATISTICS?></a></li>
+<!--
 Login 정보를 이쁘게 보여주는 작업은 찬찬히 합시다
 <?php if (isset($_SESSION['user_id'])) {
       $session_user_id = $_SESSION['user_id']; ?>

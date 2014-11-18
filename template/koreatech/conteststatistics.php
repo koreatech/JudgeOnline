@@ -1,9 +1,9 @@
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv='refresh' content='60'>
 <title><?php echo $view_title?></title>
-<link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
+<?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 <script type="text/javascript" src="include/jquery-latest.js"></script>
 <script type="text/javascript" src="include/jquery.tablesorter.js"></script>
 <script type="text/javascript">
@@ -53,11 +53,15 @@ backgroundColor: { colors: ["#fff", "#333"] }
 
 </head>
 <body>
-<div id="wrapper">
-<?php require_once("contest-header.php");?>
+<?php
+  $navigation_tab = 'statistics';
+  require_once("./template/$OJ_TEMPLATE/contest-header.php");
+?>
+
+<div class="container">
 <div id=main>
 <center><h3>Contest Statistics</h3>
-<table id=cs width=90%>
+<table class='table'>
 <thead>
 <tr align=center class=toprow><th><th>AC<th>PE<th>WA<th>TLE<th>MLE<th>OLE<th>RE<th>CE<th>Total<th><th>C<th>C++<th>Pascal<th>Java<th>Ruby<th>Bash<th>Python<th>PHP<th>Perl<th>C#<th>Obj-c<th>FreeBasic</tr>
 </thead>
@@ -92,6 +96,7 @@ echo "</tr>";
 
 <div id=foot>
 <?php require_once("oj-footer.php");?>
+	<?php require_once("include-bottom.php");?>
 
 </div><!--end foot-->
 </div><!--end main-->

@@ -2,32 +2,26 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title><?php echo $view_title?></title>
-	<link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
+  <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 </head>
 <body>
-<div id="wrapper">
-	<?php require_once("oj-header.php");?>
-<div id=main>
-<script type="text/javascript" src="include/jquery-latest.js"></script> 
-<script type="text/javascript" src="include/jquery.tablesorter.js"></script> 
-<script type="text/javascript">
-$(document).ready(function() 
-    { 
-        $("#problemset").tablesorter(); 
-    } 
-); 
-</script>
+<?php
+  $navigation_tab = "problem";
+  require_once("oj-header.php");
+?>
 
-<h3 align='center'>
-        <?php
+<div class="container">
+<nav class="text-center">
+  <ul class="pagination pagination-sm">
+<?php
     for ($i=1;$i<=$view_total_page;$i++){
-		if ($i>1) echo '&nbsp;';
-		if ($i==$page) echo "<span class=red>$i</span>";
-		else echo "<a href='problemset.php?page=".$i."'>".$i."</a>";
-	}
-        ?>
+      if ($i==$page) echo "<li class='active'><span>".$i."<span class='sr-only'>(current)</span></span></li>";
+      else echo "<li><a href='problemset.php?page=".$i."'>".$i."</a></li>";
+    }
+?>
+  </ul>
+</nav>
 
-</h3><center>
   <table>
   <tr align='center' class='evenrow'><td width='5'></td>
 			<td width='50%' colspan='1'>
@@ -43,7 +37,7 @@ $(document).ready(function()
 			</td></tr>
   </table>
 
-	<table id='problemset' width='90%'class='table table-striped'>
+	<table id='problemset' class='table table-striped'>
                 <thead>
 
                           <tr class='toprow'>
@@ -77,12 +71,10 @@ $(document).ready(function()
 			}
 			?>
 			</tbody>
-			</table></center>
-<div id=foot>
-	<?php require_once("oj-footer.php");?>
+			</table>
+</div>
+<?php require_once("oj-footer.php");?>
 
-</div><!--end foot-->
-</div><!--end main-->
-</div><!--end wrapper-->
+	<?php require_once("include-bottom.php");?>
 </body>
 </html>

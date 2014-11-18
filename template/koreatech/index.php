@@ -1,62 +1,22 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title><?php echo $view_title?></title>
-	<link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
-	<script language="javascript" type="text/javascript" src="include/jquery-latest.js"></script>
-    <script language="javascript" type="text/javascript" src="include/jquery.flot.js"></script>
-    <script type="text/javascript">
-$(function () {
-    var d1 = [];
-    var d2 = [];
-    <?php
-       foreach($chart_data_all as $k=>$d){
-    ?>
-        d1.push([<?php echo $k?>, <?php echo $d?>]);
-	<?php }?>
-    <?php
-       foreach($chart_data_ac as $k=>$d){
-    ?>
-        d2.push([<?php echo $k?>, <?php echo $d?>]);
-	<?php }?>
-
-    // a null signifies separate line segments
-    var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
-
-  $.plot($("#submission"), [
-    {
-      label:"<?php echo $MSG_SUBMIT?>",data:d1,lines: { show: true }
-    },
-    {
-      label:"<?php echo $MSG_AC?>",data:d2,bars:{show:true}
-    }
-  ],{
-    grid: {
-      backgroundColor: { colors: ["#fff", "#fff"] },
-      borderWidth: 1
-    },
-    xaxis: {
-      mode: "time",
-      max:(new Date()).getTime(),
-      min:(new Date()).getTime()-100*24*3600*1000
-    }
-  });
-});
-</script>
+  <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 </head>
 <body>
-<div id="wrapper">
 	<?php require_once("oj-header.php");?>
-<div id=main>
-	<center>
-	<div id=submission style="width:600px;height:100px" ></div>
-	</center>
 	<?php echo $view_news?>
-<div id=foot>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Welcome!</h1>
+      <p><a href="http://www.koreatech.ac.kr" target="_blank">한국기술교육대학교</a> <a href="http://cse.koreatech.ac.kr" target="_blank">컴퓨터공학부</a> Online Judge 에 오신것을 환영합니다.</p>
+      <p>교내 프로그래밍 경시대회와, 학부생 대상의 Problem Solving교육을 위해 만들어졌습니다.</p>
+      <p>조금씩 수정 중 입니다 :) 함께 개발 하실 분은 <a href="https://github.com/koreatech" target="_blank">github page</a>에 join하세요!</p>
+    </div>
+  </div>
+<div id=main>
 	<?php require_once("oj-footer.php");?>
-
-</div><!--end foot-->
-</div><!--end main-->
-</div><!--end wrapper-->
+	<?php require_once("include-bottom.php");?>
 </body>
 </html>

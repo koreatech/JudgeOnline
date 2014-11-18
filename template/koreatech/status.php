@@ -1,18 +1,17 @@
+<!DOCTYPE html>
 <html>
 <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta http-equiv='refresh' content='60'>
-        <title><?php echo $view_title?></title>
-        <link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
+  <meta http-equiv='refresh' content='60'>
+  <title><?php echo $view_title?></title>
+  <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 </head>
 <body>
-<div id="wrapper">
-        <?php require_once("oj-header.php");?>
-<div id=main>
+<?php
+  $navigation_tab = "status";
+  require_once("./template/$OJ_TEMPLATE/oj-header.php");
+?>
 
-
-
-<div id=center class="input-append">
+  <div class="container">
 <?php
 ?>
 <form id=simform action="status.php" method="get">
@@ -85,12 +84,10 @@ echo "</select>";
 }
 echo "<input type=submit class='input'  value='$MSG_SEARCH'></form>";
 ?>
-</div>
 
-<div id=center>
-<table id=result-tab class="table table-striped content-box-header" align=center width=80%>
+<table id=result-tab class="table table-striped">
 <thead>
-<tr  class='success toprow' >
+<tr  class='toprow' >
 <th ><?php echo $MSG_RUNID?>
 <th ><?php echo $MSG_USER?>
 <th ><?php echo $MSG_PROBLEM?>
@@ -125,25 +122,22 @@ echo "<input type=submit class='input'  value='$MSG_SEARCH'></form>";
                         </tbody>
 </table>
 
-</div>
-<div id=center>
-<?php echo "[<a href=status.php?".$str2.">Top</a>]&nbsp;&nbsp;";
-if (isset($_GET['prevtop']))
-        echo "[<a href=status.php?".$str2."&top=".$_GET['prevtop'].">Previous Page</a>]&nbsp;&nbsp;";
-else
-        echo "[<a href=status.php?".$str2."&top=".($top+20).">Previous Page</a>]&nbsp;&nbsp;";
-echo "[<a href=status.php?".$str2."&top=".$bottom."&prevtop=$top>Next Page</a>]";
+<nav>
+  <ul class="pager">
+<?php
+  if (isset($_GET['prevtop']))
+    echo "<li class='previous'><a href=status.php?".$str2."&top=".$_GET['prevtop'].">Previous Page</a></li>";
+  else
+    echo "<li class='previous disabled'><a href=#>Previous Page</a></li>";
+  echo "<li class=''><a href=status.php?".$str2.">Top</a></li>";
+  echo "<li class='next'><a href=status.php?".$str2."&top=".$bottom."&prevtop=$top>Next Page</a></li>";
 ?>
-</div>
+</nav>
 
 
 
-<div id=foot>
-        <?php require_once("oj-footer.php");?>
-
-</div><!--end foot-->
-</div><!--end main-->
-</div><!--end wrapper-->
+<?php require_once("oj-footer.php");?>
+<?php require_once("include-bottom.php");?>
 </body>
 <script type="text/javascript">
   var i=0;

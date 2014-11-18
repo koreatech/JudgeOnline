@@ -1,66 +1,57 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title><?php echo $view_title?></title>
-	<link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
+  <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 </head>
 <body>
-<script type="text/javascript" src="include/wz_jsgraphics.js"></script>
-<script type="text/javascript" src="include/pie.js"></script>
-<script type="text/javascript" src="include/jquery-latest.js"></script> 
-<script type="text/javascript" src="include/jquery.tablesorter.js"></script> 
-<script type="text/javascript">
-$(document).ready(function() 
-    { 
-        $("#problemstatus").tablesorter(); 
-    } 
-); 
-</script>
- 
-<div id="wrapper">
-	<?php require_once("oj-header.php");?>
-<div id=main>
-<h1>Problem <?php echo $id ?> Status</h1>
-	<center><table><tr><td>
-	
-	
-	<table  id=statics >
-			<?php 
-			$cnt=0;
-			foreach($view_problem as $row){
-				if ($cnt) 
-					echo "<tr class='oddrow'>";
-				else
-					echo "<tr class='evenrow'>";
-				foreach($row as $table_cell){
-					echo "<td>";
-					echo "\t".$table_cell;
-					echo "</td>";
-				}
-				
-				echo "</tr>";
-				
-				$cnt=1-$cnt;
-			}
-			?>
-			<tr id=pie bgcolor=white><td colspan=2><div id='PieDiv' style='position:relative;height:150px;width:200px;'></div></tr>
+<?php 
+  $navigation_tab = "problem";
+  require_once("oj-header.php");
+?>
+<div class="container">
+<?php
+  $problem_tab = "problemstatus";
+  require_once("./template/$OJ_TEMPLATE/problem-header.php");
+?>
+  <br>
+	<table class='table'><tr><td>
+	<table id=statics class='table'>
+<?php 
+	$cnt=0;
+	foreach($view_problem as $row){
+		if ($cnt) 
+			echo "<tr class='oddrow'>";
+		else
+			echo "<tr class='evenrow'>";
+		foreach($row as $table_cell){
+			echo "<td>";
+			echo "\t".$table_cell;
+			echo "</td>";
+		}
+		echo "</tr>";
+		$cnt=1-$cnt;
+  }
+?>
+	<tr id=pie bgcolor=white><td colspan=2><div id='PieDiv' style='position:relative;height:150px;width:200px;'></div></tr>
 	</table><br>
 	<?php if(isset($view_recommand)){?>
-	<table  id=recommand ><tr><td>
+	<table id=recommand class='table'><tr><td>
 			Recommanded Next Problem<br>
-			<?php 
-			$cnt=1;
-			foreach($view_recommand as $row){
-				echo "<a href=problem.php?id=$row[0]>$row[0]</a>&nbsp;";
-				if($cnt%3==0) echo "<br>";
-				$cnt++;
-			}
-			?>
-			</td></tr>
+<?php 
+	$cnt=1;
+	foreach($view_recommand as $row){
+		echo "<a href=problem.php?id=$row[0]>$row[0]</a>&nbsp;";
+		if($cnt%3==0) echo "<br>";
+		$cnt++;
+	}
+?>
+		</td></tr>
 	</table>
 	<?php }?>
 	</td><td>
-	<table id=problemstatus><thead>
+	<table id=problemstatus class='table'><thead>
 		<tr class=toprow><th style="cursor:hand" onclick="sortTable('problemstatus', 0, 'int');"><?php echo $MSG_Number?>
 			<th>RunID
 			<th><?php echo $MSG_USER?>
@@ -105,12 +96,25 @@ $(document).ready(function()
 	
 	?>
 	</table>
-	<script language="javascript">
+
+</div>
+<?php require_once("oj-footer.php");?>
+<?php require_once("include-bottom.php");?>
+<script type="text/javascript" src="include/wz_jsgraphics.js"></script>
+<script type="text/javascript" src="include/pie.js"></script>
+<script type="text/javascript" src="include/jquery.tablesorter.js"></script>
+<script type="text/javascript">
+  $(document).ready(function()
+    {
+        $("#problemstatus").tablesorter();
+    }
+  );
 	var y= new Array ();
 	var x = new Array ();
 	var dt=document.getElementById("statics");
 	var data=dt.rows;
 	var n;
+
 	for(var i=3;dt.rows[i].id!="pie";i++){
 			x.push(dt.rows[i].cells[0].innerHTML);
 			n=dt.rows[i].cells[1];
@@ -122,14 +126,7 @@ $(document).ready(function()
 	var mypie=  new Pie("PieDiv");
 	mypie.drawPie(y,x);
 	//mypie.clearPie();
-
 </script>
-	
-<div id=foot>
-	<?php require_once("oj-footer.php");?>
 
-</div><!--end foot-->
-</div><!--end main-->
-</div><!--end wrapper-->
 </body>
 </html>

@@ -1,20 +1,18 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta http-equiv='refresh' content='60'>
 	<title><?php echo $view_title?></title>
-	<link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
+  <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 </head>
 <body>
-<div id="wrapper">
-	<?php require_once("contest-header.php");?>
-<div id=main>
-
-
-
-<div id=center>
-<?php 
+<?php
+  $navigation_tab = "status";
+  require_once("./template/$OJ_TEMPLATE/contest-header.php");
 ?>
+
+<div class="container">
 <form id=simform action="status.php" method="get">
 <?php echo $MSG_PROBLEM_ID?>:<input class="input-small" style="height:24px" type=text size=4 name=problem_id value='<?php echo $problem_id?>'>
 <?php echo $MSG_USER?>:<input  class="input-mini" style="height:24px" type=text size=4 name=user_id value='<?php echo $user_id?>'>
@@ -81,12 +79,10 @@ echo "</select>";
 }
 echo "<input class=btn type=submit value='$MSG_SEARCH' /></form>";
 ?>
-</div>
 
-<div id=center>
-<table id=result-tab class="table table-striped content-box-header" align=center width=80%>
+<table id=result-tab class="table table-striped" align=center width=80%>
 <thead>
-<tr  class='success toprow'>
+<tr  class=''>
 <th ><?php echo $MSG_RUNID?>
 <th ><?php echo $MSG_USER?>
 <th ><?php echo $MSG_PROBLEM?>
@@ -118,8 +114,6 @@ echo "<input class=btn type=submit value='$MSG_SEARCH' /></form>";
 			</tbody>
 </table>
 
-</div>
-<div id=center>
 <?php echo "[<a href=status.php?".$str2.">Top</a>]&nbsp;&nbsp;";
 if (isset($_GET['prevtop']))
         echo "[<a href=status.php?".$str2."&top=".$_GET['prevtop'].">Previous Page</a>]&nbsp;&nbsp;";
@@ -127,16 +121,11 @@ else
         echo "[<a href=status.php?".$str2."&top=".($top+20).">Previous Page</a>]&nbsp;&nbsp;";
 echo "[<a href=status.php?".$str2."&top=".$bottom."&prevtop=$top>Next Page</a>]";
 ?>
+
 </div>
 
-
-
-<div id=foot>
-	<?php require_once("oj-footer.php");?>
-
-</div><!--end foot-->
-</div><!--end main-->
-</div><!--end wrapper-->
+<?php require_once("oj-footer.php");?>
+<?php require_once("include-bottom.php");?>
 <script type="text/javascript">
   var i=0;
   var judge_result=[<?php
@@ -195,6 +184,5 @@ xmlhttp.send();
 }
 <?php if ($last>0&&$_SESSION['user_id']==$_GET['user_id']) echo "fresh_result($last);";?>
 </script>
-
 </body>
 </html>
