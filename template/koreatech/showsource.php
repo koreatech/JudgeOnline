@@ -6,10 +6,10 @@
   <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 </head>
 <body>
-<div id="wrapper">
-	<?php require_once("oj-header.php");?>
-<div id=main>
-	
+<?php require_once("oj-header.php");?>
+
+<div class='container'>
+
 <link href='highlight/styles/shCore.css' rel='stylesheet' type='text/css'/> 
 <link href='highlight/styles/shThemeDefault.css' rel='stylesheet' type='text/css'/> 
 <script src='highlight/scripts/shCore.js' type='text/javascript'></script> 
@@ -60,11 +60,7 @@ SyntaxHighlighter.all();
 	}
 ?>
 </div><!--end main-->
-<div id=foot>
-	<?php require_once("oj-footer.php");?>
-</div><!--end foot-->
-
-</div><!--end wrapper-->
-	<?php require_once("include-bottom.php");?>
+<?php require_once("oj-footer.php");?>
+<?php require_once("include-bottom.php");?>
 </body>
 </html>
