@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav">
       <li <?php if ($navigation_tab == "problem") echo "class='active'"?>><a href="problemset.php"><?php echo $MSG_PROBLEMS?></a></li>
       <li <?php if ($navigation_tab == "status") echo "class='active'"?>><a href="status.php"><?php echo $MSG_STATUS?></a></li>
-      <li <?php if ($navigation_tab == "ranklist") echo "class='active'"?>><a href="ranklist.php"><?php echo $MSG_RANKLIST?></a></li>
+      <!--li <?php if ($navigation_tab == "ranklist") echo "class='active'"?>><a href="ranklist.php"><?php echo $MSG_RANKLIST?></a></li-->
       <li <?php if ($navigation_tab == "contest") echo "class='active'"?>><a href="contest.php"><?php echo $MSG_CONTEST?></a></li>
       <li <?php if ($navigation_tab == "faqs") echo "class='active'"?>><a href="faqs.php"><?php echo $MSG_FAQ?></a></li>
       <!-- <?php echo $url;?>
