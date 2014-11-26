@@ -12,11 +12,11 @@
 <div class="container">
 <hr>
 <center>
-  <font size="+3">HUSTOJ Online Judge FAQ</font>
+  <font size="+3">Online Judge FAQ</font>
 </center>
 <hr>
 <p><font color=green>Q</font>:What is the compiler the judge is using and what are the compiler options?<br>
-  <font color=red>A</font>:The online judge system is running on <a href="http://www.debian.org/">Debian Linux</a>. We are using <a href="http://gcc.gnu.org/">GNU GCC/G++</a> for C/C++ compile, <a href="http://www.freepascal.org">Free Pascal</a> for pascal compile and <a href="http://www.oracle.com/technetwork/java/index.html">sun-java-jdk1.6</a> for Java. The compile options are:<br>
+  <font color=red>A</font>:The online judge system is running on <a href="http://www.ubuntu.com/">Ubuntu Linux</a>. We are using <a href="http://gcc.gnu.org/">GNU GCC/G++</a> for C/C++ compile, <a href="http://www.oracle.com/technetwork/java/index.html">sun-java-jdk1.8</a> for Java. The compile options are:<br>
 </p>
 <table border="1">
   <tr>
@@ -25,11 +25,7 @@
   </tr>
   <tr>
     <td>C++:</td>
-    <td><font color=blue>g++ Main.cc -o Main -fno-asm -O2 -Wall -lm --static -DONLINE_JUDGE</font></td>
-  </tr>
-  <tr>
-    <td>Pascal:</td>
-    <td><font color=blue>fpc Main.pas -oMain -O1 -Co -Cr -Ct -Ci </font></td>
+    <td><font color=blue>g++ Main.cc -o Main -fno-asm -O2 -Wall -lm --static -std=c++11 -DONLINE_JUDGE</font></td>
   </tr>
   <tr>
     <td>Java:</td>
@@ -40,11 +36,10 @@
   </tr>
 </table>
 <p>  Our compiler software version:<br>
-  <font color=blue>gcc (Ubuntu/Linaro 4.4.4-14ubuntu5) 4.4.5</font><br>
-  <font color=blue>glibc 2.3.6</font><br>
-<font color=blue>Free Pascal Compiler version 2.4.0-2 [2010/03/06] for i386<br>
-java version "1.6.0_22"<br>
-</font></p>
+  <font color=blue>gcc (Ubuntu 4.8.2-19ubuntu1) 4.8.2</font><br>
+  <font color=blue>glibc 2.19</font><br>
+  <font color=blue>java version "1.8.0_25"</font>
+</p>
 <hr>
 <font color=green>Q</font>:Where is the input and the output?<br>
 <font color=red>A</font>:Your program shall read input from stdin('Standard Input') and write output to stdout('Standard Output').For example,you can use 'scanf' in C or 'cin' in C++ to read from stdin,and use 'printf' in C or 'cout' in C++ to write to stdout.<br>
@@ -140,19 +135,7 @@ public class Main{
 If you can't, then please <a href=registerpage.php>register</a> an id with password first.<br>
 <br>
 <hr>
-<center>
-  <font color=green size="+2">Any questions/suggestions please post to <a href="bbs.php">HUSTOJ BBS</a></font>
-</center>
 <hr>
-<center>
-  <table width=100% border=0>
-    <tr>
-      <td align=right width=65%>
-      <a href = "index.php"><font color=red>HUSTOJ</font></a> 
-      <a href = "http://code.google.com/p/hustoj/source/detail?r=1980"><font color=red>R1980+</font></a></td>
-    </tr>
-  </table>
-</center>
 </div>
 <?php require_once("oj-footer.php");?>
 <?php require_once("include-bottom.php");?>
