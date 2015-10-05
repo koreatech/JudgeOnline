@@ -1,51 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv='refresh' content='60'>
-	<title><?php echo $view_title?></title>
+  <meta http-equiv='refresh' content='60'>
+  <title><?php echo $view_title?></title>
   <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
-   <script type="text/javascript" src="include/jquery-latest.js"></script> 
-<script type="text/javascript" src="include/jquery.tablesorter.js"></script> 
-<script type="text/javascript">
-$(document).ready(function() 
-    { 
-
- $.tablesorter.addParser({ 
-        // set a unique id 
-        id: 'punish', 
-        is: function(s) { 
-            // return false so this parser is not auto detected 
-            return false; 
-        }, 
-        format: function(s) { 
-            // format your data for normalization 
-	    var v=s.toLowerCase().replace(/\:/,'').replace(/\:/,'').replace(/\(-/,'.').replace(/\)/,''); 
-	    //alert(v);
-	    v=parseFloat('0'+v);
-	    return v>1?v:v+Number.MAX_VALUE-1;
-        }, 
-        // set type, either numeric or text 
-        type: 'numeric' 
-    }); 
-
-        $("#rank").tablesorter({ 
-            headers: { 
-                4: { 
-                    sorter:'punish' 
-                }
-		
-<?php
-for ($i=0;$i<$pid_cnt;$i++){
-                echo ",".($i+5).": { ";
-                echo "    sorter:'punish' ";
-                echo "}";
-}
-?>
-            } 
-        }); 
-    } 
-); 
-</script>
+  <script type="text/javascript" src="include/jquery-latest.js"></script> 
 </head>
 <body>
 <?php
