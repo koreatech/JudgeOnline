@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php echo $view_title?></title>
+  <title><?php echo $view_title?></title>
   <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 </head>
 <body>
-	<?php require_once("oj-header.php");?>
-	<?php echo $view_news?>
+  <?php require_once("oj-header.php");?>
+  <?php echo $view_news?>
   <div class="container">
     <div class="jumbotron">
       <h1>Welcome!</h1>
@@ -16,7 +16,7 @@
     </div>
   </div>
 <div id=main>
-	<?php require_once("oj-footer.php");?>
-	<?php require_once("include-bottom.php");?>
+  <?php require_once("oj-footer.php");?>
+  <?php require_once("include-bottom.php");?>
 </body>
 </html>
