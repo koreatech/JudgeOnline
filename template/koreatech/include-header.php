@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css" type="text/css">
-<link rel="stylesheet" href="./template/<?php echo $OJ_TEMPLATE?>/css/fixed-top.css" type="text/css">
+<link rel="stylesheet" href="./template/<?php echo $OJ_TEMPLATE?>/css/common.css" type="text/css">
 
 <!--[if lt IE 9]>
 <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
