@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
   <title><?php echo $view_title?></title>
   <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
