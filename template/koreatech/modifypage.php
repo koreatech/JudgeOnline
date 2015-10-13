@@ -26,7 +26,7 @@
     <tr><td>New Password:
       <td><input name="npassword" size=20 type=password>
     </tr>
-    <tr><td>Repeat New Password::
+    <tr><td>Repeat New Password:
       <td><input name="rptpassword" size=20 type=password>
     </tr>
     <tr><td>School:
