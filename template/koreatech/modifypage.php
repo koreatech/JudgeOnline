@@ -8,7 +8,7 @@
 <body>
 <div id="wrapper">
   <?php require_once("oj-header.php");?>
-<div id=main>
+<div class="container">
   <form action="modify.php" method="post">
   <br><br>
   <center><table>
