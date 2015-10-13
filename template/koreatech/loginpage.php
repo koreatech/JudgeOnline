@@ -8,24 +8,41 @@
 <body>
   <?php require_once("oj-header.php");?>
   <div class="container">
-    <form action=login.php method=post>
-      <center>
-        <table width=480 algin=center>
-          <tr><td width=240><?php echo $MSG_USER_ID?>:<td width=200><input style="height:24px" name="user_id" type="text" size=20></tr>
-          <tr><td><?php echo $MSG_PASSWORD?>:<td><input name="password" type="password" size=20 style="height:24px"></tr>
+    <form class="form-horizontal" action="login.php" method="post">
+      <div class="form-group">
+        <label for="inputUserId" class="col-sm-2 control-label"><?php echo $MSG_USER_ID?></label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputUserId" name="user_id" placeholder="id">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label"><?php echo $MSG_PASSWORD?></label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="inputPassword" name="password" placeholder="password">
+        </div>
+      </div>
 <?php if($OJ_VCODE){?>
-          <tr><td><?php echo $MSG_VCODE?>:</td><td><input name="vcode" size=4 type=text style="height:24px"><img alt="click to change" src="vcode.php?<?php echo rand();?>" onclick="this.src='vcode.php?<?php echo rand();?>#'+Math.random()">*</td></tr>
+      <div class="form-group">
+        <label for="inputVerificationCode" class="col-sm-2 control-label"><?php echo $MSG_VCODE?></label>
+        <div class="col-sm-5">
+          <input type="password" class="form-control" id="inputVerificationCode" name="vcode" placeholder="verification code">
+        </div>
+        <div class="col-sm-5">
+          <img alt="click to change" src="vcode.php?<?php echo rand();?>" onclick="this.src='vcode.php?<?php echo rand();?>#'+Math.random()">
+        </div>
+      </div>
 <?php }?>
-          <tr><td colspan=3><input name="submit" type="submit" size=10 value="Submit">
-            <a href="lostpassword.php">Lost Password</a>
-          </tr>
-        </table>
-      <center>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default">Login</button>
+          or <a href="lostpassword.php">Lost Password</a>
+        </div>
+      </div>
     </form>
   </div>
   <div class="container">
     <?php require_once("oj-footer.php");?>
-  </div><!--end foot-->
+  </div>
 </body>
 </html>
 
