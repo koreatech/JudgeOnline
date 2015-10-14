@@ -1,48 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title><?php echo $view_title?></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 </head>
 <body>
 <?php require_once("oj-header.php");?>
 <div class="container">
-  <form action="modify.php" method="post">
-  <br><br>
-  <center><table>
-    <tr><td colspan=2 height=40 width=500>&nbsp;&nbsp;&nbsp;Update Information</tr>
-    <tr><td width=25%>User ID:
-      <td width=75%><?php echo $_SESSION['user_id']?>
-      <?php require_once('./include/set_post_key.php');?>
-    </tr>
-    <tr><td>Nick Name:
-      <td><input name="nick" size=50 type=text value="<?php echo htmlspecialchars($row->nick)?>" >
-    </tr>
-    <tr><td>Old Password:
-      <td><input name="opassword" size=20 type=password>
-    </tr>
-    <tr><td>New Password:
-      <td><input name="npassword" size=20 type=password>
-    </tr>
-    <tr><td>Repeat New Password:
-      <td><input name="rptpassword" size=20 type=password>
-    </tr>
-    <tr><td>School:
-      <td><input name="school" size=30 type=text value="<?php echo htmlspecialchars($row->school)?>" >
-    </tr>
-    <tr><td>Email:
-      <td><input name="email" size=30 type=text value="<?php echo htmlspecialchars($row->email)?>" >
-    </tr>
-    <tr><td>
-      <td><input value="Submit" name="submit" type="submit">
-        &nbsp; &nbsp;
-        <input value="Reset" name="reset" type="reset">
-    </tr>
-  </table></center>
-  <br>
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-10">
+    <h3>정보 수정</h3>
+    </div>
+  </div>
+  <form class="form-horizontal" action="modify.php" method="post">
+    <div class="form-group">
+      <label class="col-sm-2 control-label">아이디</label>
+      <div class="col-sm-10">
+        <p class="form-control-static">
+          <?php echo $_SESSION['user_id']?>
+          <?php require_once('./include/set_post_key.php');?>
+        </p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputNick" class="col-sm-2 control-label">별명</label>
+      <div class="col-sm-10">
+        <input id="inputNick" name="nick" type="text" class="form-control" value="<?php echo htmlspecialchars($row->nick)?>">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputOldPassword" class="col-sm-2 control-label">현재 비밀번호</label>
+      <div class="col-sm-10">
+        <input id="inputOldPassword" name="opassword" class="form-control" type="password" placeholder="input current password">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputNewPassword" class="col-sm-2 control-label">새 비밀번호</label>
+      <div class="col-sm-10">
+        <input id="inputNewPassword" name="npassword" class="form-control" type="password" placeholder="input new password">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <input id="inputRepeatNewPassword" name="rptpassword" class="form-control" type="password" placeholder="repeat new password">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputSchool" class="col-sm-2 control-label">학교</label>
+      <div class="col-sm-10">
+        <input id="inputSchool" name="school" class="form-control" type="text" value="<?php echo htmlspecialchars($row->school)?>">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputEmail" class="col-sm-2 control-label">메일주소</label>
+      <div class="col-sm-10">
+        <input id="inputEmail" name="email" class="form-control" type="text" value="<?php echo htmlspecialchars($row->email)?>">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-1">
+        <button type="submit" class="btn btn-primary"> 제 출 </button>
+      </div>
+      <div class="col-sm-1">
+        <button type="reset" class="btn btn-link">초기화</button>
+      </div>
+    </div>
+  </form>
   <a href=export_ac_code.php>Download All AC Source</a>
-  <br>
 </div>
 <?php require_once("oj-footer.php");?>
 <?php require_once("include-bottom.php");?>
