@@ -11,7 +11,6 @@
     require_once("./template/$OJ_TEMPLATE/contest-header.php");
 ?>
 <div class="container">
-<div id=main>
 <center><h3>Contest Statistics</h3>
 <table class='table'>
 <thead>
@@ -41,17 +40,12 @@
     echo "</tr>";
 ?>
 </tbody>
-<table>
-<div id=submission style="width:600px;height:300px" ></div>
-
+</table>
 </center>
+</div>
 
-<div id=foot>
 <?php require_once("oj-footer.php");?>
-  <?php require_once("include-bottom.php");?>
+<?php require_once("include-bottom.php");?>
 
-</div><!--end foot-->
-</div><!--end main-->
-</div><!--end wrapper-->
 </body>
 </html>

@@ -6,8 +6,7 @@
   <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 </head>
 <body>
-<div id="wrapper">
-  <?php require_once("oj-header.php");?>
+<?php require_once("oj-header.php");?>
 <div class="container">
   <form action="modify.php" method="post">
   <br><br>
@@ -44,12 +43,8 @@
   <br>
   <a href=export_ac_code.php>Download All AC Source</a>
   <br>
-<div id=foot>
-  <?php require_once("oj-footer.php");?>
-
-</div><!--end foot-->
-</div><!--end main-->
-</div><!--end wrapper-->
-  <?php require_once("include-bottom.php");?>
+</div>
+<?php require_once("oj-footer.php");?>
+<?php require_once("include-bottom.php");?>
 </body>
 </html>

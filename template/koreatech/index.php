@@ -15,8 +15,6 @@
       <p>조금씩 수정 중 입니다 :) 함께 개발 하실 분은 <a href="https://github.com/koreatech" target="_blank">github page</a>에 join하세요!</p>
     </div>
   </div>
-  <div class="container">
-    <?php require_once("oj-footer.php");?>
-    <?php require_once("include-bottom.php");?>
-  </body>
+  <?php require_once("oj-footer.php");?>
+  <?php require_once("include-bottom.php");?>
 </html>

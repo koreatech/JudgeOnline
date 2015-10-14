@@ -67,10 +67,8 @@ foreach($view_problemset as $row){
   </table>
 </div><!--end wrapper-->
 </div>
-<div class="container">
 <?php require_once("oj-footer.php");?>
 <?php require_once("include-bottom.php");?>
-</div>
 </body>
 <script>
 var diff=new Date("<?php echo date("Y/m/d H:i:s")?>").getTime()-new Date().getTime();
@@ -92,8 +90,8 @@ function clock()
   //alert(n);
   document.getElementById('nowdate').innerHTML=n;
   setTimeout("clock()",1000);
-    } 
-    clock();
-    </script>
-
+}
+clock();
+</script>
 </html>
+
