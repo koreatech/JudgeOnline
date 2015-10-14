@@ -5,7 +5,7 @@
   <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 </head>
 <body>
-<?php 
+<?php
   $navigation_tab = "faqs";
   require_once("oj-header.php");
 ?>
@@ -134,8 +134,6 @@ public class Main{
 <font color=red>A</font>:Can you submit programs for any practice problems on this Online Judge? If you can, then that is the account you use in an online contest.
 If you can't, then please <a href=registerpage.php>register</a> an id with password first.<br>
 <br>
-<hr>
-<hr>
 </div>
 <?php require_once("oj-footer.php");?>
 <?php require_once("include-bottom.php");?>
