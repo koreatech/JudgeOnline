@@ -1,63 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv='refresh' content='60'>
-<title><?php echo $view_title?></title>
-<?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
-<script type="text/javascript" src="include/jquery-latest.js"></script>
-<script type="text/javascript" src="include/jquery.tablesorter.js"></script>
-<script type="text/javascript">
-$(document).ready(function()
-{
-$("#cs").tablesorter();
-}
-);
-</script>
-
-<script language="javascript" type="text/javascript" src="include/jquery-latest.js"></script>
-<script language="javascript" type="text/javascript" src="include/jquery.flot.js"></script>
-<script type="text/javascript">
-$(function () {
-var d1 = [];
-var d2 = [];
-<?php
-       foreach($chart_data_all as $k=>$d){
-    ?>
-d1.push([<?php echo $k?>, <?php echo $d?>]);
-<?php }?>
-<?php
-       foreach($chart_data_ac as $k=>$d){
-    ?>
-d2.push([<?php echo $k?>, <?php echo $d?>]);
-<?php }?>
-//var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
-
-// a null signifies separate line segments
-var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
-$.plot($("#submission"), [
-{label:"<?php echo $MSG_SUBMIT?>",data:d1,lines: { show: true }},
-{label:"<?php echo $MSG_AC?>",data:d2,bars:{show:true}} ],{
-xaxis: {
-mode: "time"
-//, max:(new Date()).getTime()
-//,min:(new Date()).getTime()-100*24*3600*1000
-},
-grid: {
-backgroundColor: { colors: ["#fff", "#333"] }
-}
-});
-});
-//alert((new Date()).getTime());
-</script>
-
-
+  <title><?php echo $view_title?></title>
+  <meta http-equiv='refresh' content='60'>
+  <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 </head>
 <body>
 <?php
-  $navigation_tab = 'statistics';
-  require_once("./template/$OJ_TEMPLATE/contest-header.php");
+    $navigation_tab = "statistics";
+    require_once("./template/$OJ_TEMPLATE/contest-header.php");
 ?>
-
 <div class="container">
 <div id=main>
 <center><h3>Contest Statistics</h3>
@@ -67,26 +19,26 @@ backgroundColor: { colors: ["#fff", "#333"] }
 </thead>
 <tbody>
 <?php
-for ($i=0;$i<$pid_cnt;$i++){
-if(!isset($PID[$i])) $PID[$i]="";
+    for ($i=0;$i<$pid_cnt;$i++){
+      if(!isset($PID[$i])) $PID[$i]="";
 
-if ($i&1)
-echo "<tr align=center class=oddrow><td>";
-else
-echo "<tr align=center class=evenrow><td>";
-echo "<a href='problem.php?cid=$cid&pid=$i'>$PID[$i]</a>";
-for ($j=0;$j<22;$j++) {
-if(!isset($R[$i][$j])) $R[$i][$j]="";
-echo "<td>".$R[$i][$j];
-}
-echo "</tr>";
-}
-echo "<tr align=center class=evenrow><td>Total";	
-for ($j=0;$j<22;$j++) {
-if(!isset($R[$i][$j])) $R[$i][$j]="";
-echo "<td>".$R[$i][$j];
-}
-echo "</tr>";
+      if ($i&1)
+        echo "<tr align=center class=oddrow><td>";
+      else
+        echo "<tr align=center class=evenrow><td>";
+      echo "<a href='problem.php?cid=$cid&pid=$i'>$PID[$i]</a>";
+      for ($j=0;$j<22;$j++) {
+        if(!isset($R[$i][$j])) $R[$i][$j]="";
+        echo "<td>".$R[$i][$j];
+      }
+      echo "</tr>";
+    }
+    echo "<tr align=center class=evenrow><td>Total";	
+    for ($j=0;$j<22;$j++) {
+      if(!isset($R[$i][$j])) $R[$i][$j]="";
+      echo "<td>".$R[$i][$j];
+    }
+    echo "</tr>";
 ?>
 </tbody>
 <table>
@@ -96,7 +48,7 @@ echo "</tr>";
 
 <div id=foot>
 <?php require_once("oj-footer.php");?>
-	<?php require_once("include-bottom.php");?>
+  <?php require_once("include-bottom.php");?>
 
 </div><!--end foot-->
 </div><!--end main-->
