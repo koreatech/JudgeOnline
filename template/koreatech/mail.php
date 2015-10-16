@@ -49,17 +49,16 @@ if($view_content) {
       </div>
     </div>
   </form>
-  <div class="container">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <td>ID</td>
-          <td>보낸사람</td>
-          <td>제목</td>
-          <td>날짜</td>
-        </tr>
-      </thead>
-      <tbody>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>보낸사람</td>
+        <td>제목</td>
+        <td>날짜</td>
+      </tr>
+    </thead>
+    <tbody>
 <?php 
 foreach($view_mail as $row){
   echo "<tr>";
@@ -71,9 +70,8 @@ foreach($view_mail as $row){
   echo "</tr>";
 }
 ?>
-      </tbody>
-    </table>
-  </div>
+    </tbody>
+  </table>
 </div>
 <?php require_once("oj-footer.php");?>
 <?php require_once("include-bottom.php");?>
