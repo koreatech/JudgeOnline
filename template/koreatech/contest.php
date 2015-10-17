@@ -33,14 +33,14 @@ else
         <br>
   </div>
 
-  <table id='problemset' class='table table-bordered'>
+  <table id='problemset' class='table table-hover table-striped'>
     <thead>
       <tr>
-        <td width='5'></td>
-        <td ><?php echo $MSG_PROBLEM_ID?></td>
-        <td width='60%'><?php echo $MSG_TITLE?></td>
-        <td ><?php echo $MSG_AC?></td>
-        <td ><?php echo $MSG_SUBMIT?></td>
+        <th width='5'></th>
+        <th ><?php echo $MSG_PROBLEM_ID?></th>
+        <th width='60%'><?php echo $MSG_TITLE?></th>
+        <th ><?php echo $MSG_AC?></th>
+        <th ><?php echo $MSG_SUBMIT?></th>
       </tr>
     </thead>
     <tbody>

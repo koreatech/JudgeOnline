@@ -25,14 +25,14 @@ for ($i=1;$i<=$view_total_page;$i++){
   <div class="col-md-12 text-right">
     <form class="form-inline">
       <div class="form-group">
-        <label class="sr-only" for="searcheTerm">search term</label>
+        <label class="sr-only" for="searchTerm">search term</label>
         <input class="form-control" type="text" name="search" id="searchTerm">
       </div>
       <button class="btn btn-mini" type="submit"><?php echo $MSG_SEARCH?></button>
     </form>
   </div>
 
-  <table id='problemset' class='table table-striped'>
+  <table id='problemset' class='table table-hover table-striped'>
     <thead>
       <tr class='toprow'>
         <th width='5'></th>

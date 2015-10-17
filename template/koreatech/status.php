@@ -79,7 +79,7 @@ echo "</select>";
 echo "<input type=submit class='input'  value='$MSG_SEARCH'></form>";
 ?>
 
-<table id=result-tab class="table table-striped">
+<table id=result-tab class="table table-hover table-striped">
   <thead>
     <tr  class='toprow' >
       <th ><?php echo $MSG_RUNID?>
