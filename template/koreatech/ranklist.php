@@ -32,9 +32,9 @@ require_once("oj-header.php");
   <table class="table table-hover table-striped">
     <thead>
       <tr class="toprow">
-        <th width="5%" align="center"><b><?php echo $MSG_Number?></b></th>
+        <th width="10%" align="center"><b><?php echo $MSG_Number?></b></th>
         <th width="10%" align="center"><b><?php echo $MSG_USER?></b></th>
-        <th width="55%" align="center"><b><?php echo $MSG_NICK?></b></th>
+        <th width="50%" align="center"><b><?php echo $MSG_NICK?></b></th>
         <th width="10%" align="center"><b><?php echo $MSG_AC?></b></th>
         <th width="10%" align="center"><b><?php echo $MSG_SUBMIT?></b></th>
         <th width="10%" align="center"><b><?php echo $MSG_RATIO?></b></th>
