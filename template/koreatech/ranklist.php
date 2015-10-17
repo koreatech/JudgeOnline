@@ -22,10 +22,10 @@ require_once("oj-header.php");
     </form>
   </div>
   <div class="col-sm-6 text-right">
-    <a href="ranklist.php?scope=d">Day</a>
-    <a href="ranklist.php?scope=w">Week</a>
-    <a href="ranklist.php?scope=m">Month</a>
-    <a href="ranklist.php?scope=y">Year</a>
+    <a class="btn btn-link" href="ranklist.php?scope=d">Day</a>
+    <a class="btn btn-link" href="ranklist.php?scope=w">Week</a>
+    <a class="btn btn-link" href="ranklist.php?scope=m">Month</a>
+    <a class="btn btn-link" href="ranklist.php?scope=y">Year</a>
   </div>
 </div>
 <div class="container">
