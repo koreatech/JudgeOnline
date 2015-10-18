@@ -25,7 +25,7 @@
       <div class="form-group">
         <label for="inputVerificationCode" class="col-sm-2 control-label"><?php echo $MSG_VCODE?></label>
         <div class="col-sm-5">
-          <input type="password" class="form-control" id="inputVerificationCode" name="vcode" placeholder="verification code">
+          <input type="text" class="form-control" id="inputVerificationCode" name="vcode" placeholder="verification code">
         </div>
         <div class="col-sm-5">
           <img alt="click to change" src="vcode.php?<?php echo rand();?>" onclick="this.src='vcode.php?<?php echo rand();?>#'+Math.random()">
