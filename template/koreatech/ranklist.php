@@ -15,8 +15,7 @@ require_once("oj-header.php");
   <div class="col-sm-6 text-left">
     <form action="userinfo.php" class="form-inline">
       <div class="form-group">
-        <label class="control=label" for="searchUser"><?php echo $MSG_USER?></label>
-        <input class="form-control" type="text" name="user">
+        <input class="form-control" type="text" placeholder="<?php echo $MSG_USER?>" name="user">
         <button class="btn btn-mini" type="submit">Go</button>
       </div>
     </form>
