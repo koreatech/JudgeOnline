@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-  <meta http-equiv='refresh' content='60'>
   <title><?php echo $view_title?></title>
+  <meta http-equiv='refresh' content='60'>
   <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 </head>
 <body>
@@ -11,11 +11,13 @@
   require_once("./template/$OJ_TEMPLATE/oj-header.php");
 ?>
   <div class="container">
-    <form id=simform action="status.php" method="get">
-      <?php echo $MSG_PROBLEM_ID?>:<input class="input-mini" style="height:24px" type=text size=4 name=problem_id value='<?php echo $problem_id?>'>
-      <?php echo $MSG_USER?>:<input class="input-mini" style="height:24px" type=text size=4 name=user_id value='<?php echo $user_id?>'>
-      <?php if (isset($cid)) echo "<input type='hidden' name='cid' value='$cid'>";?>
-      <?php echo $MSG_LANG?>:<select class="input-small" size="1" name="language">
+    <form id="simform" class="form-inline" action="status.php" method="get">
+      <div class="form-group">
+        <input class="form-control" type="text" name="problem_id" placeholder="<?php echo $MSG_PROBLEM_ID?>" value="<?php echo $problem_id?>">
+        <input class="form-control" type="text" name="user_id" placeholder="<?php echo $MSG_USER?>" value="<?php echo $user_id?>">
+        <?php if (isset($cid)) echo "<input type='hidden' name='cid' value='$cid'>";?>
+        <label class="form-label"><?php echo $MSG_LANG?></label>
+        <select class="form-control" size="1" name="language">
 <?php
   if (isset($_GET['language'])) $language=$_GET['language'];
   else $language=-1;
@@ -31,69 +33,39 @@
     $i++;
   }
 ?>
-    </select>
-<?php echo $MSG_RESULT?>:<select class="input-small" size="1" name="jresult">
-<?php if (isset($_GET['jresult'])) $jresult_get=intval($_GET['jresult']);
-else $jresult_get=-1;
-if ($jresult_get>=12||$jresult_get<0) $jresult_get=-1;
-if ($jresult_get==-1) echo "<option value='-1' selected>All</option>";
-else echo "<option value='-1'>All</option>";
-for ($j=0;$j<12;$j++){
-  $i=($j+4)%12;
-  if ($i==$jresult_get) echo "<option value='".strval($jresult_get)."' selected>".$jresult[$i]."</option>";
-  else echo "<option value='".strval($i)."'>".$jresult[$i]."</option>";
-}
-echo "</select>";
+        </select>
+        <label class="form-label"><?php echo $MSG_RESULT?></label>
+        <select class="form-control" name="jresult">
+<?php
+  if (isset($_GET['jresult'])) $jresult_get=intval($_GET['jresult']);
+  else $jresult_get=-1;
+  if ($jresult_get>=12||$jresult_get<0) $jresult_get=-1;
+  if ($jresult_get==-1) echo "<option value='-1' selected>All</option>";
+  else echo "<option value='-1'>All</option>";
+  for ($j=0;$j<12;$j++){
+    $i=($j+4)%12;
+    if ($i==$jresult_get) echo "<option value='".strval($jresult_get)."' selected>".$jresult[$i]."</option>";
+    else echo "<option value='".strval($i)."'>".$jresult[$i]."</option>";
+  }
 ?>
-</select>
-
-<?php if(isset($_SESSION['administrator'])||isset($_SESSION['source_browser'])){
-  if(isset($_GET['showsim']))
-    $showsim=intval($_GET['showsim']);
-  else
-    $showsim=0;
-  echo "SIM:
-    <select id=\"appendedInputButton\"  class=\"input-mini\" name=showsim onchange=\"document.getElementById('simform').submit();\">
-    <option value=0 ".($showsim==0?'selected':'').">All</option>
-    <option value=50 ".($showsim==50?'selected':'').">50</option>
-    <option value=60 ".($showsim==60?'selected':'').">60</option>
-    <option value=70 ".($showsim==70?'selected':'').">70</option>
-    <option value=80 ".($showsim==80?'selected':'').">80</option>
-    <option value=90 ".($showsim==90?'selected':'').">90</option>
-    <option value=100 ".($showsim==100?'selected':'').">100</option>
-    </select>";
-/*      if (isset($_GET['cid']))
-                echo "<input type=hidden name=cid value='".$_GET['cid']."'>";
-        if (isset($_GET['language']))
-                echo "<input type=hidden name=language value='".$_GET['language']."'>";
-        if (isset($_GET['user_id']))
-                echo "<input type=hidden name=user_id value='".$_GET['user_id']."'>";
-        if (isset($_GET['problem_id']))
-                echo "<input type=hidden name=problem_id value='".$_GET['problem_id']."'>";
-        //echo "<input type=submit>";
- */
-
-
-
-}
-echo "<input type=submit class='input'  value='$MSG_SEARCH'></form>";
-?>
-
-<table id=result-tab class="table table-hover table-striped">
+        </select>
+        <button type="submit" class="btn"><?php echo $MSG_SEARCH;?></button>
+      </div>
+    </form>
+<table id="result-tab" class="table table-hover table-striped">
   <thead>
-    <tr  class='toprow' >
-      <th ><?php echo $MSG_RUNID?>
-      <th ><?php echo $MSG_USER?>
-      <th ><?php echo $MSG_PROBLEM?>
-      <th ><?php echo $MSG_RESULT?>
-      <th ><?php echo $MSG_MEMORY?>
-      <th ><?php echo $MSG_TIME?>
-      <th ><?php echo $MSG_LANG?>
-      <th ><?php echo $MSG_CODE_LENGTH?>
-      <th ><?php echo $MSG_SUBMIT_TIME?>
+    <tr>
+      <th><?php echo $MSG_RUNID?></th>
+      <th><?php echo $MSG_USER?></th>
+      <th><?php echo $MSG_PROBLEM?></th>
+      <th><?php echo $MSG_RESULT?></th>
+      <th><?php echo $MSG_MEMORY?></th>
+      <th><?php echo $MSG_TIME?></th>
+      <th><?php echo $MSG_LANG?></th>
+      <th><?php echo $MSG_CODE_LENGTH?></th>
+      <th><?php echo $MSG_SUBMIT_TIME?></th>
     </tr>
   </thead>
-
   <tbody>
 <?php
 foreach($view_status as $row){
