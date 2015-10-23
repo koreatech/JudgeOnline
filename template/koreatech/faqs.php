@@ -94,29 +94,29 @@ i = 1 // 안됩니다
 <font color=green>Q</font> 채점 시스템의 결과에 대한 설명 부탁드립니다.<br>
 <font color=red>A</font> 채점 시스템은 몇가지 결과를 내놓는데, 아래와 같습니다.<br>
 <dl class="dl-horizontal">
-  <dt>Pending</dt>
+  <dt><?php echo $MSG_Pending;?></dt>
   <dd>채점 시스템이 바쁩니다. 조금만 기다리시면 채점됩니다.</dd>
-  <dt>Pending Rejudge</dt>
+  <dt><?php echo $MSG_Pending_Rejudging;?></dt>
   <dd>채점 데이터가 변경되어서 재 채점 대기중 입니다.</dd>
-  <dt>Compiling</dt>
+  <dt><?php echo $MSG_Compiling;?></dt>
   <dd>채점 시스템이 컴파일 중 입니다.</dd>
-  <dt>Running &amp; Judging</dt>
+  <dt><?php echo $MSG_Running_Judging;?></dt>
   <dd>제출된 코드가 실행 중이며, 시스템이 채점을 하고 있습니다.</dd>
-  <dt>Accepted</dt>
+  <dt><?php echo $MSG_Accepted;?></dt>
   <dd>축하합니다! 정답입니다.</dd>
-  <dt>Presentation Error</dt>
+  <dt><?php echo $MSG_Presentation_Error;?></dt>
   <dd>출력이 채점 데이터와 다른 부분이 있습니다. 대게 공백(space), 개행 등의 출력 조건이 맞지 않는 경우니 다시 점검해 주세요.</dd>
-  <dt>Wrong Answer</dt>
+  <dt><?php echo $MSG_Wrong_Answer;?></dt>
   <dd>아쉽네요. 틀렸습니다. (체점 데이터는 공개되지 않습니다, 실제 대회도 이래요)</dd>
-  <dt>Time Limit Exceeded</dt>
+  <dt><?php echo $MSG_Time_Limit_Exceed;?></dt>
   <dd>실행하는데 너무 오래 걸립니다. 시간 복잡도를 다시 확인해 보세요.</dd>
-  <dt>Memory Limit Exceeded</dt>
+  <dt><?php echo $MSG_Memory_Limit_Exceed;?></dt>
   <dd>너무 많은 메모리를 사용했습니다. 문제에 제시된 메모리 제한을 확인해 주세요.</dd>
-  <dt>Output Limit Exceeded</dt>
+  <dt><?php echo $MSG_Output_Limit_Exceed;?></dt>
   <dd>너무 많은 내용을 출력했습니다. 현재 출력 제한은 1MB입니다.</dd>
-  <dt>Runtime Error</dt>
-  <dd>그 외는 모두 Runtime Error를 받게 됩니다. 'segmentation fault', 'floating point exception', 'used forbidden functions', 'tried to access forbidden memories' 등에 해당합니다.</dd>
-  <dt>Compile Error</dt>
+  <dt><?php echo $MSG_Runtime_Error;?></dt>
+  <dd>그 외는 모두 <?php echo $MSG_Runtime_Error;?>를 받게 됩니다. 'segmentation fault', 'floating point exception', 'used forbidden functions', 'tried to access forbidden memories' 등에 해당합니다.</dd>
+  <dt><?php echo $MSG_Compile_Error;?></dt>
   <dd>컴파일에 실패 했습니다. (물론 경고를 오류로 취급하진 않습니다) 이 메시지는 클릭하면 구체적인 컴파일 에러가 안내됩니다.</bb>
 </dl>
 </p>
