@@ -16,14 +16,13 @@
         <input class="form-control" type="text" name="problem_id" placeholder="<?php echo $MSG_PROBLEM_ID?>" value="<?php echo $problem_id?>">
         <input class="form-control" type="text" name="user_id" placeholder="<?php echo $MSG_USER?>" value="<?php echo $user_id?>">
         <?php if (isset($cid)) echo "<input type='hidden' name='cid' value='$cid'>";?>
-        <label class="form-label"><?php echo $MSG_LANG?></label>
-        <select class="form-control" size="1" name="language">
+        <select class="form-control"  name="language">
 <?php
   if (isset($_GET['language'])) $language=$_GET['language'];
   else $language=-1;
   if ($language<0||$language>=count($language_name)) $language=-1;
-  if ($language==-1) echo "<option value='-1' selected>All</option>";
-  else echo "<option value='-1'>All</option>";
+  if ($language==-1) echo "<option value='-1' selected>모든언어</option>";
+  else echo "<option value='-1'>모든언어</option>";
   $i=0;
   foreach ($language_name as $lang){
     if ($i==$language)
@@ -34,14 +33,13 @@
   }
 ?>
         </select>
-        <label class="form-label"><?php echo $MSG_RESULT?></label>
         <select class="form-control" name="jresult">
 <?php
   if (isset($_GET['jresult'])) $jresult_get=intval($_GET['jresult']);
   else $jresult_get=-1;
   if ($jresult_get>=12||$jresult_get<0) $jresult_get=-1;
-  if ($jresult_get==-1) echo "<option value='-1' selected>All</option>";
-  else echo "<option value='-1'>All</option>";
+  if ($jresult_get==-1) echo "<option value='-1' selected>모든결과</option>";
+  else echo "<option value='-1'>모든결과</option>";
   for ($j=0;$j<12;$j++){
     $i=($j+4)%12;
     if ($i==$jresult_get) echo "<option value='".strval($jresult_get)."' selected>".$jresult[$i]."</option>";
