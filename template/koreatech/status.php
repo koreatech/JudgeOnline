@@ -11,6 +11,7 @@
   require_once("./template/$OJ_TEMPLATE/oj-header.php");
 ?>
   <div class="container">
+    <div class="text-center">
     <form id="simform" class="form-inline" action="status.php" method="get">
       <div class="form-group">
         <input class="form-control" type="text" name="problem_id" placeholder="<?php echo $MSG_PROBLEM_ID?>" value="<?php echo $problem_id?>">
@@ -50,6 +51,7 @@
         <button type="submit" class="btn"><?php echo $MSG_SEARCH;?></button>
       </div>
     </form>
+    </div>
 <table id="result-tab" class="table table-hover table-striped">
   <thead>
     <tr>
