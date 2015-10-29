@@ -23,7 +23,7 @@
   $MSG_Compiling="컴파일중";
   $MSG_Running_Judging="채점중";
   $MSG_Accepted="정답";
-  $MSG_Presentation_Error="출력 오류";
+  $MSG_Presentation_Error="출력형식 오류";
   $MSG_Wrong_Answer="틀렸습니다";
   $MSG_Time_Limit_Exceed="시간초과";
   $MSG_Memory_Limit_Exceed="메모리 초과";
