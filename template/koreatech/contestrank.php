@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-  <meta http-equiv='refresh' content='60'>
   <title><?php echo $view_title?></title>
+  <meta http-equiv='refresh' content='60'>
   <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
   <script type="text/javascript" src="include/jquery-latest.js"></script> 
 </head>
 <body>
 <?php
-  $navigation_tab = "ranklist";
-  require_once("./template/$OJ_TEMPLATE/contest-header.php");
+$navigation_tab = "ranklist";
+require_once("./template/$OJ_TEMPLATE/contest-header.php");
 ?>
 
 <div class="container">
@@ -21,124 +21,121 @@
 <table id=rank class='table'>
   <thead>
     <tr class=toprow align=center>
-      <th width=5%>Rank</th>
-      <th width=10%>User</th>
-      <th width=10%>Nick</th>
-      <th width=5%>Solved</th>
-      <th width=5%>Penalty</th>
+      <th width=5%>순위</th>
+      <th width=10%>사용자</th>
+      <th width=10%>이름</th>
+      <th width=5%>문제</th>
+      <th width=5%>전체시간</th>
 <?php
-$rank=1;
 for ($i=0;$i<$pid_cnt;$i++)
-  echo "<td><a href=problem.php?cid=$cid&pid=$i>$PID[$i]</a></td>";
+  echo "<th class='text-center'><a href=problem.php?cid=$cid&pid=$i>$PID[$i]</a></th>";
 
 echo "</tr></thead>\n<tbody>";
 
+$rank=1;
 for ($i=0;$i<$user_cnt;$i++){
-	echo "<tr><td>";
-	$uuid=$U[$i]->user_id;
+  echo "<tr><td>";
+  $uuid=$U[$i]->user_id;
   $nick=$U[$i]->nick;
   if($nick[0]!="*")
-        echo $rank++;
+    echo $rank++;
   else
-        echo "*";
+    echo "*";
 
-	$usolved=$U[$i]->solved;
+  $usolved=$U[$i]->solved;
   if($uuid==$_GET['user_id']) echo "<td bgcolor=#ffff77>";
   else echo"<td>";
 
-	echo "<a name=\"$uuid\" href=userinfo.php?user=$uuid>$uuid</a>";
-	echo "<td><a href=userinfo.php?user=$uuid>".$U[$i]->nick."</a>";
-	echo "<td><a href=status.php?user_id=$uuid&cid=$cid>$usolved</a>";
-	echo "<td>".sec2str($U[$i]->time);
-	for ($j=0;$j<$pid_cnt;$j++){
-		$bg_color="eeeeee";
-		if (isset($U[$i]->p_ac_sec[$j])&&$U[$i]->p_ac_sec[$j]>0){
-      $aa=0x33+$U[$i]->p_wa_num[$j]*32;
+  echo "<a name=\"$uuid\" href=userinfo.php?user=$uuid>$uuid</a>";
+  echo "<td><a href=userinfo.php?user=$uuid>".$U[$i]->nick."</a>";
+  echo "<td><a href=status.php?user_id=$uuid&cid=$cid>$usolved</a>";
+  echo "<td>".sec2str($U[$i]->time);
+  for ($j=0;$j<$pid_cnt;$j++){
+    $bg_color="eeeeee";
+    if (isset($U[$i]->p_ac_sec[$j])&&$U[$i]->p_ac_sec[$j]>0){
+      $aa=0x66+$U[$i]->p_wa_num[$j]*32;
       $aa=$aa>0xaa?0xaa:$aa;
       $aa=dechex($aa);
-			$bg_color="$aa"."ff"."$aa";
+      $bg_color="$aa"."ff"."$aa";
 
       //$bg_color="aaffaa";
       if($uuid==$first_blood[$j]){
         $bg_color="aaaaff";
       }
-		}else if(isset($U[$i]->p_wa_num[$j])&&$U[$i]->p_wa_num[$j]>0) {
+    }else if(isset($U[$i]->p_wa_num[$j])&&$U[$i]->p_wa_num[$j]>0) {
       $aa=0xaa-$U[$i]->p_wa_num[$j]*10;
       $aa=$aa>16?$aa:16;
       $aa=dechex($aa);
-			$bg_color="ff$aa$aa";
-		}
+      $bg_color="ff$aa$aa";
+    }
 
-	  echo "<td class='text-center' style='background-color:#$bg_color'>";
-		if(isset($U[$i])){
-			if (isset($U[$i]->p_ac_sec[$j])&&$U[$i]->p_ac_sec[$j]>0)
-				echo sec2str($U[$i]->p_ac_sec[$j]);
-			if (isset($U[$i]->p_wa_num[$j])&&$U[$i]->p_wa_num[$j]>0) 
-				echo "(-".$U[$i]->p_wa_num[$j].")";
-		}
-	}
-	echo "</tr>\n";
+    echo "<td class='text-center' style='background-color:#$bg_color'>";
+    if(isset($U[$i])){
+      if (isset($U[$i]->p_ac_sec[$j])&&$U[$i]->p_ac_sec[$j]>0)
+        echo sec2str($U[$i]->p_ac_sec[$j]);
+      if (isset($U[$i]->p_wa_num[$j])&&$U[$i]->p_wa_num[$j]>0)
+        echo "<small>(-".$U[$i]->p_wa_num[$j].")<small>";
+    }
+  }
+  echo "</tr>\n";
 }
-  echo "</tbody></table>";
+echo "</tbody></table>";
 ?>
 
 <script>
-  function getTotal(rows){
-    var total=0;
-    for(var i=0;i<rows.length&&total==0;i++){
-      try{
-         total=parseInt(rows[rows.length-i].cells[0].innerHTML);
-          if(isNaN(total)) total=0;
+function getTotal(rows){
+  var total=0;
+  for(var i=0;i<rows.length&&total==0;i++){
+    try{
+      total=parseInt(rows[rows.length-i].cells[0].innerHTML);
+      if(isNaN(total)) total=0;
       }catch(e){
-      
+
       }
     }
     return total;
-  
+
   }
 function metal(){
   var tb=window.document.getElementById('rank');
   var rows=tb.rows;
   try{
-  var total=getTotal(rows);
-  //alert(total);
-	  for(var i=1;i<rows.length;i++){
-	  	var cell=rows[i].cells[0];
+    var total=getTotal(rows);
+    for(var i=1;i<rows.length;i++){
+      var cell=rows[i].cells[0];
       var acc=rows[i].cells[3];
       var ac=parseInt(acc.innerText);
       if (isNaN(ac)) ac=parseInt(acc.textContent);
-                
-                
-	  	if(cell.innerHTML!="*"&&ac>0){
-	 
-	  	     var r=parseInt(cell.innerHTML);
-	  	     if(r==1){
-	  	       cell.innerHTML="Winner";
-             cell.className="badge badge-warning";
-	  	     }
-	  	     if(r>1&&r<=total*.05+1)
-	  	        cell.className="badge badge-warning";
-	  	     if(r>total*.05+1&&r<=total*.20+1)
-	  	        cell.className="badge";
-	  	     if(r>total*.20+1&&r<=total*.45+1)
-	  	        cell.className="badge badge-error";
-	  	     if(r>total*.45+1&&ac>0)
-              		cell.className="badge badge-info";
-	  	}
-	  }
+
+
+      if(cell.innerHTML!="*"&&ac>0){
+
+        var r=parseInt(cell.innerHTML);
+        if(r==1){
+          cell.innerHTML="Winner";
+          cell.className="badge alert-warning";
+           }
+           if(r>1&&r<=total*.05+1)
+             cell.className="badge alert-warning";
+           if(r>total*.05+1&&r<=total*.20+1)
+             cell.className="badge alert-success";
+           if(r>total*.20+1&&r<=total*.45+1)
+             cell.className="badge alert-info";
+           if(r>total*.45+1&&ac>0)
+             cell.className="badge alert-danger";
+      }
+    }
   }catch(e){
-     //alert(e);
+    //alert(e);
   }
 }
 metal();
 
 
 </script>
-
 </div>
 
 <?php require_once("oj-footer.php");?>
 <?php require_once("include-bottom.php");?>
-
 </body>
 </html>
