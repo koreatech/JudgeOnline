@@ -102,7 +102,7 @@ function metal(){
     var total=getTotal(rows);
     for(var i=1;i<rows.length;i++){
       var cell=rows[i].cells[0];
-      var acc=rows[i].cells[3];
+      var acc=rows[i].cells[2];
       var ac=parseInt(acc.innerText);
       if (isNaN(ac)) ac=parseInt(acc.textContent);
 
@@ -116,11 +116,11 @@ function metal(){
            }
            if(r>1&&r<=total*.05+1)
              cell.className="badge alert-warning";
-           if(r>total*.05+1&&r<=total*.20+1)
+           else if(r>total*.05+1&&r<=total*.20+1)
              cell.className="badge alert-success";
-           if(r>total*.20+1&&r<=total*.45+1)
+           else if(r>total*.20+1&&r<=total*.45+1)
              cell.className="badge alert-info";
-           if(r>total*.45+1&&ac>0)
+           else if(ac>0)
              cell.className="badge alert-danger";
       }
     }
