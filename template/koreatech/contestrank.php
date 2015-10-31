@@ -22,8 +22,7 @@ require_once("./template/$OJ_TEMPLATE/contest-header.php");
   <thead>
     <tr class=toprow align=center>
       <th width=5%>순위</th>
-      <th width=10%>사용자</th>
-      <th width=10%>이름</th>
+      <th width=10%>아이디</th>
       <th width=5%>문제</th>
       <th width=5%>전체시간</th>
 <?php
@@ -46,10 +45,9 @@ for ($i=0;$i<$user_cnt;$i++){
   if($uuid==$_GET['user_id']) echo "<td bgcolor=#ffff77>";
   else echo"<td>";
 
-  echo "<a name=\"$uuid\" href=userinfo.php?user=$uuid>$uuid</a>";
-  echo "<td><a href=userinfo.php?user=$uuid>".$U[$i]->nick."</a>";
-  echo "<td><a href=status.php?user_id=$uuid&cid=$cid>$usolved</a>";
-  echo "<td>".sec2str($U[$i]->time);
+  echo "<a name=\"$uuid\" href=userinfo.php?user=$uuid>$uuid</a></td>";
+  echo "<td><a href=status.php?user_id=$uuid&cid=$cid>$usolved</a></td>";
+  echo "<td>".sec2str($U[$i]->time)."</td>";
   for ($j=0;$j<$pid_cnt;$j++){
     $bg_color="eeeeee";
     if (isset($U[$i]->p_ac_sec[$j])&&$U[$i]->p_ac_sec[$j]>0){
@@ -76,6 +74,7 @@ for ($i=0;$i<$user_cnt;$i++){
       if (isset($U[$i]->p_wa_num[$j])&&$U[$i]->p_wa_num[$j]>0)
         echo "<small>(-".$U[$i]->p_wa_num[$j].")<small>";
     }
+    echo "</td>";
   }
   echo "</tr>\n";
 }
