@@ -21,7 +21,9 @@ $str2="";
 $lock=false;
 $lock_time=date("Y-m-d H:i:s",time());
 $sql="SELECT * FROM `solution` WHERE problem_id > 0 ";
+$isContest = false;
 if (isset($_GET['cid'])){
+  $isContest = true;
   $cid=intval($_GET['cid']);
   $sql=$sql." AND `contest_id`='$cid' and num >= 0 ";
   $str2=$str2."&cid=$cid";
@@ -314,10 +316,8 @@ if(!$OJ_MEMCACHE)mysql_free_result($result);
 
 <?php
 /////////////////////////Template
-if (isset($_GET['cid']))
-  require("template/".$OJ_TEMPLATE."/conteststatus.php");
-else
-  require("template/".$OJ_TEMPLATE."/status.php");
+require("template/".$OJ_TEMPLATE."/status.php");
+
 /////////////////////////Common foot
 if(file_exists('./include/cache_end.php'))
   require_once('./include/cache_end.php');

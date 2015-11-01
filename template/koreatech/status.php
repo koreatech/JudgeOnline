@@ -3,12 +3,17 @@
 <head>
   <title><?php echo $view_title?></title>
   <meta http-equiv='refresh' content='60'>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
 </head>
 <body>
 <?php
   $navigation_tab = "status";
+if ($isContest) {
+  require_once("./template/$OJ_TEMPLATE/contest-header.php");
+} else {
   require_once("./template/$OJ_TEMPLATE/oj-header.php");
+}
 ?>
   <div class="container">
     <div class="text-center">
