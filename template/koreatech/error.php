@@ -13,7 +13,7 @@
     require_once("oj-header.php");
   }
 ?>
-<div class="container">
+<div class="container text-center">
   <?php echo $view_errors?>
 </div>
 <?php require_once("oj-footer.php");?>
