@@ -108,20 +108,19 @@ function metal(){
 
 
       if(cell.innerHTML!="*"&&ac>0){
-
         var r=parseInt(cell.innerHTML);
         if(r==1){
           cell.innerHTML="Winner";
           cell.className="badge alert-warning";
-           }
-           if(r>1&&r<=total*.05+1)
-             cell.className="badge alert-warning";
-           else if(r>total*.05+1&&r<=total*.20+1)
-             cell.className="badge alert-success";
-           else if(r>total*.20+1&&r<=total*.45+1)
-             cell.className="badge alert-info";
-           else if(ac>0)
-             cell.className="badge alert-danger";
+        }
+        else if(r>1&&r<=total*.05+1)
+          cell.className="badge alert-warning";
+        else if(r>total*.05+1&&r<=total*.20+1)
+          cell.className="badge alert-success";
+        else if(r>total*.20+1&&r<=total*.45+1)
+          cell.className="badge alert-info";
+        else if(ac>0)
+          cell.className="badge alert-danger";
       }
     }
   }catch(e){
