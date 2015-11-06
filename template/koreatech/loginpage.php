@@ -28,7 +28,7 @@
           <input type="text" class="form-control" id="inputVerificationCode" name="vcode" placeholder="verification code">
         </div>
         <div class="col-sm-5">
-          <img alt="click to change" src="vcode.php?<?php echo rand();?>" onclick="this.src='vcode.php?<?php echo rand();?>#'+Math.random()">
+          <img alt="click to change" src="vcode.php" onclick="this.src='vcode.php?'+Math.random()">
         </div>
       </div>
 <?php }?>

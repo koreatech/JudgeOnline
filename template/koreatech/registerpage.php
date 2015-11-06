@@ -55,7 +55,7 @@
         <input name="vcode" type="text" class="form-control" placeholder="vcode">
       </div>
       <div class="col-sm-2">
-        <img alt="click to change" src="vcode.php" onclick="this.src='vcode.php#'+Math.random()">
+        <img alt="click to change" src="vcode.php" onclick="this.src='vcode.php?'+Math.random()">
       </div>
     </div>
 <?php }?>
