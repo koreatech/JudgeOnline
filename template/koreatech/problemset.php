@@ -35,7 +35,6 @@ for ($i=1;$i<=$view_total_page;$i++){
   <table id='problemset' class='table table-hover table-striped'>
     <thead>
       <tr class='toprow'>
-        <th width='5'></th>
         <th width='120'><?php echo $MSG_PROBLEM_ID?></th>
         <th><?php echo $MSG_TITLE?></th>
         <th width='10%'><?php echo $MSG_SOURCE?></th>
@@ -44,22 +43,38 @@ for ($i=1;$i<=$view_total_page;$i++){
       </tr>
     </thead>
     <tbody>
-<?php 
-$cnt=0;
-foreach($view_problemset as $row){
-  if ($cnt) 
-    echo "<tr class='oddrow'>";
-  else
-    echo "<tr class='evenrow'>";
-  foreach($row as $table_cell){
-    echo "<td>";
-    echo "\t".$table_cell;
-    echo "</td>";
-  }
-
-  echo "</tr>";
-
-  $cnt=1-$cnt;
+<?php
+foreach ($view_problemset as $row) {
+?>
+      <tr>
+        <td>
+          <?php echo $row[1]?>
+        </td>
+        <td>
+<?php
+if (strcmp($row[0], "success") == 0) {
+?>
+          <span class='label label-success'>성공</span>&nbsp;
+<?php
+} else if (strcmp($row[0], "fail") == 0) {
+?>
+          <span class='label label-danger'>실패</span>&nbsp;
+<?php
+}
+?>
+          <a href="problem.php?id=<?php echo $row[1]?>"><?php echo $row[2]?></a>
+        </td>
+        <td>
+          <nobr><?php echo $row[3]?></nobr>
+        </td>
+        <td>
+          <a href="status.php?problem_id=<?php echo $row[1]?>&jresult=4"><?php echo $row[4]?></a>
+        </td>
+        <td>
+          <a href="status.php?problem_id=<?php echo $row[1]?>"><?php echo $row[5]?></a>
+        </td>
+      </tr>
+<?php
 }
 ?>
     </tbody>
