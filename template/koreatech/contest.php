@@ -11,17 +11,20 @@ require_once("./template/$OJ_TEMPLATE/contest-header.php");
 ?>
 <div class="container">
   <div class="row text-center">
-    <h3>Contest <?php echo $view_cid?> - <?php echo $view_title ?></h3>
+    <h3>
+      <?php echo $view_title ?>
+    </h3>
     <p><?php echo $view_description?></p>
     <br><span class='text-info'><?php echo $view_start_time?></span> ~ <span class='text-info'><?php echo $view_end_time?></span><br>
     서버시간 : <span class='text-info' id='nowdate'><?php echo date("Y-m-d H:i:s")?></span><br>
 <?php
-if ($now>$end_time)
-  echo "<span class='text-danger'>대회가 종료 되었습니다</span>";
-else if ($now<$start_time)
-  echo "<span class='text-danger'>대회 시작 전 입니다</span>";
-else
+if ($now > $end_time) {
+  echo "<span class='text-mute'>대회가 종료 되었습니다</span>";
+} else if ($now < $start_time) {
+  echo "<span class='text-warning'>대회 시작 전 입니다</span>";
+} else {
   echo "<span class='text-danger'>대회가 진행 중 입니다</span>";
+}
 ?>
   </div>
 
