@@ -129,7 +129,7 @@ xmlhttp.onreadystatechange=function()
     {
      var tb=window.document.getElementById('result');
      var r=xmlhttp.responseText;
-     var ra=r.split(",");
+     var ra=r.replace(/[\n\r]/g,"").split(",");
 //     alert(r);
 //     alert(judge_result[r]);
       var loader="<img width=18 src=image/loader.gif>";  

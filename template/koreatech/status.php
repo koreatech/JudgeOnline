@@ -149,7 +149,7 @@ xmlhttp.onreadystatechange=function()
     var tb=window.document.getElementById('result-tab');
     var row=findRow(solution_id);
     var r=xmlhttp.responseText;
-    var ra=r.split(",");
+    var ra=r.replace(/[\n\r]/g,"").split(",");
     var loader="<img width=18 src=image/loader.gif>";
     row.cells[3].innerHTML="<span class='btn btn-warning'>"+judge_result[ra[0]]+"</span>"+loader;
     row.cells[4].innerHTML=ra[1];
