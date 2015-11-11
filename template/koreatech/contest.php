@@ -13,24 +13,16 @@ require_once("./template/$OJ_TEMPLATE/contest-header.php");
   <div class="row text-center">
     <h3>Contest <?php echo $view_cid?> - <?php echo $view_title ?></h3>
     <p><?php echo $view_description?></p>
-    <br>Start Time: <font color=#993399><?php echo $view_start_time?></font>
-    End Time: <font color=#993399><?php echo $view_end_time?></font><br>
-    Current Time: <font color=#993399><span id=nowdate > <?php echo date("Y-m-d H:i:s")?></span></font>
-    Status:<?php
-if ($now>$end_time) 
-  echo "<span class=red>Ended</span>";
-else if ($now<$start_time) 
-  echo "<span class=red>Not Started</span>";
-else 
-  echo "<span class=red>Running</span>";
-?>&nbsp;&nbsp;
+    <br><span class='text-info'><?php echo $view_start_time?></span> ~ <span class='text-info'><?php echo $view_end_time?></span><br>
+    서버시간 : <span class='text-info' id='nowdate'><?php echo date("Y-m-d H:i:s")?></span><br>
 <?php
-if ($view_private=='0') 
-  echo "<span class=blue>Public</font>";
-else 
-  echo "&nbsp;&nbsp;<span class=red>Private</font>"; 
+if ($now>$end_time)
+  echo "<span class='text-danger'>대회가 종료 되었습니다</span>";
+else if ($now<$start_time)
+  echo "<span class='text-danger'>대회 시작 전 입니다</span>";
+else
+  echo "<span class='text-danger'>대회가 진행 중 입니다</span>";
 ?>
-        <br>
   </div>
 
   <table id='problemset' class='table table-hover table-striped'>
