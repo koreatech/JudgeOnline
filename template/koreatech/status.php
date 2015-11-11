@@ -151,7 +151,7 @@ xmlhttp.onreadystatechange=function()
     var r=xmlhttp.responseText;
     var ra=r.replace(/[\n\r]/g,"").split(",");
     var loader="<img width=18 src=image/loader.gif>";
-    row.cells[3].innerHTML="<span class='btn btn-warning'>"+judge_result[ra[0]]+"</span>"+loader;
+    row.cells[3].innerHTML="<span class='label label-warning'>"+judge_result[ra[0]]+"</span>"+loader;
     row.cells[4].innerHTML=ra[1];
     row.cells[5].innerHTML=ra[2];
     if(ra[0]<4)
