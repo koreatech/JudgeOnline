@@ -37,7 +37,6 @@ for ($i=1;$i<=$view_total_page;$i++){
       <tr class='toprow'>
         <th width='120'><?php echo $MSG_PROBLEM_ID?></th>
         <th><?php echo $MSG_TITLE?></th>
-        <th width='10%'><?php echo $MSG_SOURCE?></th>
         <th style="cursor:hand"  width=60 ><?php echo $MSG_AC?></th>
         <th style="cursor:hand" width=60 ><?php echo $MSG_SUBMIT?></th>
       </tr>
@@ -65,13 +64,10 @@ if (strcmp($row[0], "success") == 0) {
           <a href="problem.php?id=<?php echo $row[1]?>"><?php echo $row[2]?></a>
         </td>
         <td>
-          <nobr><?php echo $row[3]?></nobr>
+          <a href="status.php?problem_id=<?php echo $row[1]?>&jresult=4"><?php echo $row[3]?></a>
         </td>
         <td>
-          <a href="status.php?problem_id=<?php echo $row[1]?>&jresult=4"><?php echo $row[4]?></a>
-        </td>
-        <td>
-          <a href="status.php?problem_id=<?php echo $row[1]?>"><?php echo $row[5]?></a>
+          <a href="status.php?problem_id=<?php echo $row[1]?>"><?php echo $row[4]?></a>
         </td>
       </tr>
 <?php

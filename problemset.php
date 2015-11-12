@@ -112,9 +112,8 @@ while ($row=mysql_fetch_object($result)) {
   }
   $view_problemset[$i][1] = $row->problem_id;
   $view_problemset[$i][2] = $row->title;
-  $view_problemset[$i][3] = mb_substr($row->source,0,8,'utf8');
-  $view_problemset[$i][4] = $row->accepted;
-  $view_problemset[$i][5] = $row->submit;
+  $view_problemset[$i][3] = $row->accepted;
+  $view_problemset[$i][4] = $row->submit;
 
   $i++;
 }
