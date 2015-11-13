@@ -66,7 +66,7 @@
 
   //ranklist.php
   $MSG_Number="순위";
-  $MSG_NICK="닉네임";
+  $MSG_NICK="한마디";
   $MSG_SOLVED="해결 문제 수";
   $MSG_RATIO="정답률";
 

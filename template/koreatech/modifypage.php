@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="inputNick" class="col-sm-2 control-label">별명</label>
+    <label for="inputNick" class="col-sm-2 control-label"><?php echo $MSG_NICK;?></label>
       <div class="col-sm-10">
         <input id="inputNick" name="nick" type="text" class="form-control" value="<?php echo htmlspecialchars($row->nick)?>">
       </div>

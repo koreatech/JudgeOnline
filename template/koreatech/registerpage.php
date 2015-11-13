@@ -21,7 +21,7 @@
     <div class="form-group">
       <label class="col-sm-2 control-label"><?php echo $MSG_NICK?></label>
       <div class="col-sm-10">
-        <input name="nick" type="text" class="form-control" placeholder="input nickname">
+        <input name="nick" type="text" class="form-control" placeholder="input any words">
       </div>
     </div>
     <div class="form-group">

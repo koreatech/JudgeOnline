@@ -10,7 +10,16 @@
 <div class="container">
 <table class="table table-striped" id="statics">
 <caption>
-<?php echo "<h2>".htmlspecialchars($nick)." <small>$user <a href=mail.php?to_user=$user>$MSG_MAIL</a></small></h2>";?>
+<?php echo "<h2>$user <small><a href=mail.php?to_user=$user>$MSG_MAIL</a></small></h2>";?>
+<blockquote>
+<?php
+  if (empty($nick)) {
+    echo "한마디가 없습니다";
+  } else {
+    echo htmlspecialchars($nick);
+  }
+?>
+</blockquote>
 </caption>
 <tr><td width=15%><?php echo $MSG_Number?><td width=25% align=center><?php echo $Rank?><td width=70% align=center>Solved Problems List</tr>
 <tr><td><?php echo $MSG_SOVLED?><td align=center><a href='status.php?user_id=<?php echo $user?>&jresult=4'><?php echo $AC?></a>
