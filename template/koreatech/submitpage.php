@@ -196,8 +196,9 @@ function resume(){
     s.value="<?php echo $MSG_SUBMIT?>";
     t.value="<?php echo $MSG_TR?>";
     if (handler_interval) {
-      window.clearInterval( handler_interval);
+      window.clearInterval(handler_interval);
     }
+    handler_interval = false;
   } else {
     s.value="<?php echo $MSG_SUBMIT?>("+count+")";
     t.value="<?php echo $MSG_TR?>("+count+")";
