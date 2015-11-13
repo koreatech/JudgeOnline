@@ -24,7 +24,7 @@ require_once("./template/$OJ_TEMPLATE/contest-header.php");
       <th width=5%>순위</th>
       <th width=10%>아이디</th>
       <th width=5%>문제</th>
-      <th width=5%>전체시간</th>
+      <th width=5%>걸린시간</th>
 <?php
 for ($i=0;$i<$pid_cnt;$i++)
   echo "<th class='text-center'><a href=problem.php?cid=$cid&pid=$i>$PID[$i]</a></th>";
