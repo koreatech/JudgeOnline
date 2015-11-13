@@ -28,6 +28,7 @@ require_once("oj-header.php");
   </div>
 </div>
 <div class="container">
+  <div class="col-md-12"><div class="table-responsive">
   <table class="table table-hover table-striped">
     <thead>
       <tr class="toprow">
@@ -53,7 +54,8 @@ foreach($view_rank as $row){
 ?>
       </tbody>
   </table>
-  <div class="container text-center">
+  </div></div>
+  <div class="col-md-12 text-center">
 <?php
 for($i = 0; $i <$view_total ; $i += $page_size) {
   echo "<a href='./ranklist.php?start=" . strval ( $i ).($scope?"&scope=$scope":"") . "'>";

@@ -12,8 +12,11 @@
 
 <div class="container">
 
+<div class="col-md-12 text-center">
+<h2>대회 목록<br><small>서버시간: <span id="nowdate"></span></small></h2>
+</div>
+<div class="col-md-12"><div class="table-responsive">
 <table class="table ">
-  <h2 class="text-center">Contest List<br><small>ServerTime : <span id=nowdate></span></small></h2>
   <tr class=toprow align=center>
     <td width=10%>ID</td>
     <td width=50%>Name</td>
@@ -39,7 +42,7 @@
 			}
 			?>
 	</tbody>
-</table>
+</table></div></div>
 
 
 		

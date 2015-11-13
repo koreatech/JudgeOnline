@@ -28,6 +28,7 @@ if ($now > $end_time) {
 ?>
   </div>
 
+  <div class="col-md-12"><div class="table-responsive">
   <table id='problemset' class='table table-hover table-striped'>
     <thead>
       <tr>
@@ -59,7 +60,7 @@ foreach($view_problemset as $row){
 }
 ?>
     </tbody>
-  </table>
+  </table></div></div>
 </div><!--end wrapper-->
 </div>
 <?php require_once("oj-footer.php");?>

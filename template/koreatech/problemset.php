@@ -32,6 +32,7 @@ for ($i=1;$i<=$view_total_page;$i++){
     </form>
   </div>
 
+  <div class="col-md-12"><div class="table-responsive">
   <table id='problemset' class='table table-hover table-striped'>
     <thead>
       <tr class='toprow'>
@@ -75,6 +76,7 @@ if (strcmp($row[0], "success") == 0) {
 ?>
     </tbody>
   </table>
+  </div></div>
 </div>
 <?php require_once("oj-footer.php");?>
 <?php require_once("include-bottom.php");?>

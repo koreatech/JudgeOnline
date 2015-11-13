@@ -18,6 +18,7 @@ require_once("./template/$OJ_TEMPLATE/contest-header.php");
   <!--a href="contestrank.xls.php?cid=<?php echo $cid?>" >Download</a-->
 </div>
 
+<div class="col-md-12"><div class="table-responsive">
 <table id=rank class='table'>
   <thead>
     <tr class=toprow align=center>
@@ -78,8 +79,8 @@ for ($i=0;$i<$user_cnt;$i++){
   }
   echo "</tr>\n";
 }
-echo "</tbody></table>";
 ?>
+  </tbody></table></div></div>
 
 <script>
 function getTotal(rows){

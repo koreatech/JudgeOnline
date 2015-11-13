@@ -16,7 +16,7 @@ if ($isContest) {
 }
 ?>
   <div class="container">
-    <div class="text-center">
+    <div class="col-md-12 text-center">
     <form id="simform" class="form-inline" action="status.php" method="get">
       <div class="form-group">
         <input class="form-control" type="text" name="problem_id" placeholder="<?php echo $MSG_PROBLEM_ID?>" value="<?php echo $problem_id?>">
@@ -57,6 +57,7 @@ if ($isContest) {
       </div>
     </form>
     </div>
+<div class="col-md-12"><div class="table-responsive">
 <table id="result-tab" class="table table-hover table-striped">
   <thead>
     <tr>
@@ -84,7 +85,7 @@ foreach($view_status as $row){
 }
 ?>
   </tbody>
-</table>
+</table></div></div>
 
 <nav>
   <ul class="pager">
