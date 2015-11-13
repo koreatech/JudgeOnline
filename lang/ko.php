@@ -42,20 +42,20 @@
   $MSG_CODE_LENGTH="길이";
   $MSG_SUBMIT_TIME="시간";
   //problemstatistics.php
-  $MSG_PD="PD";
-  $MSG_PR="PR";
-  $MSG_CI="CI";
-  $MSG_RJ="RJ";
-  $MSG_AC="AC";
-  $MSG_PE="PE";
-  $MSG_WA="WA";
-  $MSG_TLE="TLE";
-  $MSG_MLE="MLE";
-  $MSG_OLE="OLE";
-  $MSG_RE="RE";
-  $MSG_CE="CE";
-  $MSG_CO="CO";
-  $MSG_TR="Test";
+  $MSG_PD="대기";
+  $MSG_PR="재체점 대기";
+  $MSG_CI="컴파일중";
+  $MSG_RJ="재체점";
+  $MSG_AC="정답";
+  $MSG_PE="출력형식오류";
+  $MSG_WA="틀림";
+  $MSG_TLE="시간초과";
+  $MSG_MLE="메모리초과";
+  $MSG_OLE="출력많음";
+  $MSG_RE="실행에러";
+  $MSG_CE="컴파일에러";
+  $MSG_CO="컴파일성공";
+  $MSG_TR="테스트";
 
   //problemset.php
   $MSG_SEARCH="Search";
