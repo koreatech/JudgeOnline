@@ -14,6 +14,11 @@ require_once("./template/$OJ_TEMPLATE/contest-header.php");
     <h3>
       <?php echo $view_title ?>
     </h3>
+  </div>
+<?php
+if($view_title != "No Such Contest!" && $rows_cnt > 0) {
+?>
+  <div class="row text-center">
     <p><?php echo $view_description?></p>
     <br><span class='text-info'><?php echo $view_start_time?></span> ~ <span class='text-info'><?php echo $view_end_time?></span><br>
     서버시간 : <span class='text-info' id='nowdate'><?php echo date("Y-m-d H:i:s")?></span><br>
@@ -54,7 +59,9 @@ foreach($view_problemset as $row){
 ?>
     </tbody>
   </table></div></div>
-</div><!--end wrapper-->
+<?php
+}
+?>
 </div>
 <?php require_once("oj-footer.php");?>
 <?php require_once("include-bottom.php");?>
