@@ -16,29 +16,25 @@
 <h2>대회 목록<br><small>서버시간: <span id="nowdate"></span></small></h2>
 </div>
 <div class="col-md-12"><div class="table-responsive">
-<table class="table ">
+<table class="table table-hover table-striped">
+  <thead>
   <tr class=toprow align=center>
-    <td width=10%>ID</td>
-    <td width=50%>Name</td>
-    <td width=30%>Status</td>
-    <td width=10%>Private</td>
+    <th width=10%>ID</th>
+    <th width=50%>Name</th>
+    <th width=30%>Status</th>
+    <th width=10%>Private</th>
   </tr>
+  </thead>
 	<tbody>
 			<?php 
-			$cnt=0;
 			foreach($view_contest as $row){
-				if ($cnt) 
-					echo "<tr class='oddrow'>";
-				else
-					echo "<tr class='evenrow'>";
+				echo "<tr>";
 				foreach($row as $table_cell){
 					echo "<td>";
 					echo "\t".$table_cell;
 					echo "</td>";
 				}
-
 				echo "</tr>";
-				$cnt=1-$cnt;
 			}
 			?>
 	</tbody>
