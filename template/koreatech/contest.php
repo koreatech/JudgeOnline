@@ -42,21 +42,14 @@ if ($now > $end_time) {
     <tbody>
 <?php 
 $PID = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-$cnt=0;
 foreach($view_problemset as $row){
-  if ($cnt) 
-    echo "<tr class='oddrow'>";
-  else
-    echo "<tr class='evenrow'>";
+  echo "<tr>";
   foreach($row as $table_cell){
     echo "<td>";
     echo "\t".$table_cell;
     echo "</td>";
   }
-
   echo "</tr>";
-
-  $cnt=1-$cnt;
 }
 ?>
     </tbody>
