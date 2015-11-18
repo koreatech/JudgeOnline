@@ -86,7 +86,7 @@ foreach($view_status as $row){
 ?>
   </tbody>
 </table></div></div>
-
+<div class="col-md-12">
 <nav>
   <ul class="pager">
 <?php
@@ -98,6 +98,7 @@ echo "<li class=''><a href=status.php?".$str2.">Top</a></li>";
 echo "<li class='next'><a href=status.php?".$str2."&top=".$bottom."&prevtop=$top>Next Page</a></li>";
 ?>
 </nav>
+</div>
 </div>
 
 
