@@ -11,16 +11,6 @@ require_once("oj-header.php");
 ?>
 
 <div class="container">
-<nav class="text-center">
-  <ul class="pagination pagination-sm">
-<?php
-for ($i=1;$i<=$view_total_page;$i++){
-  if ($i==$page) echo "<li class='active'><span>".$i."<span class='sr-only'>(current)</span></span></li>";
-  else echo "<li><a href='problemset.php?page=".$i."'>".$i."</a></li>";
-}
-?>
-  </ul>
-</nav>
 
   <div class="col-md-12 text-right">
     <form class="form-inline">
@@ -77,6 +67,16 @@ if (strcmp($row[0], "success") == 0) {
     </tbody>
   </table>
   </div></div>
+<nav class="text-center">
+  <ul class="pagination pagination-sm">
+<?php
+for ($i=1;$i<=$view_total_page;$i++){
+  if ($i==$page) echo "<li class='active'><span>".$i."<span class='sr-only'>(current)</span></span></li>";
+  else echo "<li><a href='problemset.php?page=".$i."'>".$i."</a></li>";
+}
+?>
+  </ul>
+</nav>
 </div>
 <?php require_once("oj-footer.php");?>
 <?php require_once("include-bottom.php");?>
