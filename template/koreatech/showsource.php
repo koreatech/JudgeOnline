@@ -4,16 +4,6 @@
   <title><?php echo $view_title?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
-<style type="text/css" media="screen">
-    #editor { 
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        overflow: hidden;
-    }
-</style>
 </head>
 <body>
 <?php require_once("oj-header.php");?>
@@ -49,10 +39,15 @@
   </tbody>
 </table>
 <?php
+$ace_editor_language = strtolower($language_name[$slanguage]);
+if($ace_editor_language == "c" || $ace_editor_language == "c++") {
+  $ace_editor_language = "c_cpp";
+}
+
 if ($ok==true){
   if($view_user_id!=$_SESSION['user_id'])
     echo "<a href='mail.php?to_user=$view_user_id&title=$MSG_SUBMIT $id'>Mail the auther</a>";
-  echo "<div id='editor'><pre>";
+  echo "<div id='editor' data-mode='".$ace_editor_language."'><pre>";
   echo htmlspecialchars(str_replace("\n\r","\n",$view_source));
   echo "</pre></div>";
 
@@ -63,12 +58,6 @@ if ($ok==true){
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/ace.js"></script>
 <script>
-<?php
-$ace_editor_language = strtolower($language_name[$slanguage]);
-if($ace_editor_language == "c" || $ace_editor_language == "c++") {
-  $ace_editor_language = "c_cpp";
-}
-?>
   var editor = ace.edit("editor");
   editor.setTheme("ace/theme/monokai");
   editor.getSession().setMode("ace/mode/<?php echo $ace_editor_language;?>");

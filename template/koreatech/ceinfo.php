@@ -11,13 +11,33 @@
   require_once("oj-header.php");
 ?>
 <div class="container">
-  <div id='source'></div>
+  <div id='editor_load'></div>
   <pre id='errtxt' class="alert alert-error"><?php echo $view_reinfo?></pre>
 </div>
 <?php require_once("oj-footer.php");?>
 <?php require_once("include-bottom.php");?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/ace.js"></script>
 <script>
- $("#source").load("showsource.php?id=<?php echo $id?> #editor");
+<?php
+$ace_editor_language = strtolower($language_name[$slanguage]);
+if($ace_editor_language == "c" || $ace_editor_language == "c++") {
+  $ace_editor_language = "c_cpp";
+}
+?>
+var editor;
+
+var editorViewFunction = function() {
+  var modeName = $("#editor").data("mode");
+  editor = ace.edit("editor");
+  editor.setTheme("ace/theme/monokai");
+  editor.getSession().setMode("ace/mode/" + modeName);
+  editor.setReadOnly(true);
+  editor.setOptions({
+    "maxLines" : Infinity,
+    "fontSize" : 14
+  });
+}
+$("#editor_load").load("showsource.php?id=<?php echo $id?> #editor", editorViewFunction);
 </script>
 </body>
 </html>
