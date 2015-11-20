@@ -90,12 +90,13 @@ foreach($view_status as $row){
 <nav>
   <ul class="pager">
 <?php
-if (isset($_GET['prevtop']))
-  echo "<li class='previous'><a href=status.php?".$str2."&top=".$_GET['prevtop'].">Previous Page</a></li>";
-else
+if ($prev_top != -1) {
+  echo "<li class='previous'><a href=status.php?".$str2."&top=".$prev_top.">Previous Page</a></li>";
+} else {
   echo "<li class='previous disabled'><a href=#>Previous Page</a></li>";
+}
 echo "<li class=''><a href=status.php?".$str2.">Top</a></li>";
-echo "<li class='next'><a href=status.php?".$str2."&top=".$bottom."&prevtop=$top>Next Page</a></li>";
+echo "<li class='next'><a href=status.php?".$str2."&top=".$bottom.">Next Page</a></li>";
 ?>
 </nav>
 </div>

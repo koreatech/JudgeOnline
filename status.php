@@ -58,15 +58,9 @@ if (isset($_GET['cid'])){
   }
 }
 $start_first=true;
-$order_str=" ORDER BY `solution_id` DESC ";
 
 
 
-// check the top arg
-if (isset($_GET['top'])){
-  $top=strval(intval($_GET['top']));
-  if ($top!=-1) $sql=$sql."AND `solution_id`<='".$top."' ";
-}
 
 // check the problem arg
 $problem_id="";
@@ -126,26 +120,41 @@ if($OJ_SIM){
   $sql="select * from ($sql order by solution_id desc limit 1000) solution left join `sim` on solution.solution_id=sim.s_id WHERE 1 ";
   if(isset($_GET['showsim'])&&intval($_GET['showsim'])>0){
     $showsim=intval($_GET['showsim']);
-    $sql="select * from ($old ) solution 
+    $sql="select * from ($old ) solution
       left join `sim` on solution.solution_id=sim.s_id WHERE result=4 and sim>=$showsim limit 1000";
     $sql="SELECT * FROM ($sql) `solution`
       left join(select solution_id old_s_id,user_id old_user_id from solution limit 1000) old
       on old.old_s_id=sim_s_id WHERE  old_user_id!=user_id and sim_s_id!=solution_id ";
     $str2.="&showsim=$showsim";
   }
-  //$sql=$sql.$order_str." LIMIT 20";
 }
 
 
+$prevtop_sql = "";
+if (isset($_GET['top'])) {
+  $top = strval(intval($_GET['top']));
+  if ($top != -1) {
+    $prevtop_sql = $sql."AND `solution_id` > '".$top."' ";
+    $sql = $sql."AND `solution_id`<='".$top."' ";
+  }
+}
 
+$sql = $sql." ORDER BY `solution_id` DESC LIMIT 20";
 
+// get prevtop value
+$prev_top = -1;
+if ($prevtop_sql != "") {
+  $prevtop_sql = $prevtop_sql." ORDER BY `solution_id` ASC LIMIT 20";
 
-
-$sql=$sql.$order_str." LIMIT 20";
-//echo $sql;
-
-
-
+  $prev_result = mysql_query($prevtop_sql);
+  $prev_rows_cnt = 0;
+  if($prev_result) $prev_rows_cnt = mysql_num_rows($prev_result);
+  for ($i = 0; $i < $prev_rows_cnt; $i++) {
+    $prev_row = mysql_fetch_array($prev_result);
+    $prev_top = $prev_row['solution_id'];
+  }
+  mysql_free_result($prev_result);
+}
 
 if($OJ_MEMCACHE){
   require("./include/memcache.php");
@@ -153,11 +162,11 @@ if($OJ_MEMCACHE){
   if($result) $rows_cnt=count($result);
   else $rows_cnt=0;
 }else{
-
   $result = mysql_query($sql);// or die("Error! ".mysql_error());
   if($result) $rows_cnt=mysql_num_rows($result);
   else $rows_cnt=0;
 }
+
 $top=$bottom=-1;
 $cnt=0;
 if ($start_first){
@@ -181,7 +190,7 @@ for ($i=0;$i<$rows_cnt;$i++){
 
 
   if ($top==-1) $top=$row['solution_id'];
-  $bottom=$row['solution_id'];
+  $bottom=$row['solution_id'] + 1;
   $flag=(!is_running(intval($row['contest_id']))) ||
     isset($_SESSION['source_browser']) ||
     isset($_SESSION['administrator']) || 
@@ -209,8 +218,6 @@ for ($i=0;$i<$rows_cnt;$i++){
   }else{
     $view_status[$i][2]= "<div class=center><a href='problem.php?id=".$row['problem_id']."'>".$row['problem_id']."</a></div>";
   }
-
-
 
   if(isset($_SESSION['http_judge'])) {
     $view_status[$i][3].="<form method=post action=admin/problem_judge.php><input type=hidden name=sid value='".$row['solution_id']."'>";
