@@ -36,6 +36,7 @@ var editorViewFunction = function() {
     "maxLines" : Infinity,
     "fontSize" : 14
   });
+  editor.commands.removeCommand('find');
 }
 $("#editor_load").load("showsource.php?id=<?php echo $id?> #editor", editorViewFunction);
 </script>
