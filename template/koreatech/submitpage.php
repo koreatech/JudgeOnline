@@ -18,37 +18,11 @@ if (isset($_GET['id'])) {
 $problem_tab = "submitpage";
 require_once("./template/$OJ_TEMPLATE/problem-header.php");
 
-if(strpos($_SERVER['HTTP_USER_AGENT'],'MSIE'))
-{
-  $OJ_EDITE_AREA=false;
-}
+$OJ_EDITE_AREA=false;
 
-if($OJ_EDITE_AREA){
 ?>
-<script language="Javascript" type="text/javascript" src="edit_area/edit_area_full.js"></script>
-  <script language="Javascript" type="text/javascript">
 
-  editAreaLoader.init({
-    id: "source",
-      start_highlight: true,
-      allow_resize: "both",
-      allow_toggle: true,
-      word_wrap: true,
-      language: "en",
-      syntax: "cpp",
-      font_size: "8",
-      syntax_selection_allow: "basic,c,cpp,java,pas,perl,php,python,ruby",
-      toolbar: "search, go_to_line, fullscreen, |, undo, redo, |, select_font,syntax_selection,|, change_smooth_selection, highlight, reset_highlight, word_wrap, |, help"
-});
-</script>
-<?php }?>
-<script src="include/checksource.js"></script>
-
-<form id=frmSolution action="submit.php" method="post"
-<?php if($OJ_LANG=="cn"){?>
- onsubmit="return checksource(document.getElementById('source').value);"
-<?php }?>
->
+<form id=frmSolution action="submit.php" method="post">
 <?php if (isset($id)){?>
 <input id=problem_id type='hidden'  value='<?php echo $id?>' name="id"><br>
 <?php }else{
@@ -70,17 +44,13 @@ Language:
   else $lastlang=0;
   for($i=0;$i<$lang_count;$i++){
     if($lang&(1<<$i))
-      echo"<option value=$i ".( $lastlang==$i?"selected":"").">
-      ".$language_name[$i]."
-      </option>";
+      echo"<option value=$i ".( $lastlang==$i?"selected":"").">".$language_name[$i]."</option>";
   }
-
 ?>
 </select>
 <br>
-<br>
-
-<textarea style="width:100%" cols=180 rows=20 id="source" name="source"><?php echo $view_src?></textarea><br>
+<div id="source"></div>
+<textarea name="source"><?php echo $view_src?></textarea><br>
 <div class='text-center'>
 <?php echo $MSG_Input?>:<textarea style="width:40%" cols=40 rows=5 id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
 <?php echo $MSG_Output?>:
@@ -91,7 +61,6 @@ Language:
 <br>
 <input id=Submit class="btn btn-info" type=button value="<?php echo $MSG_SUBMIT?>"  onclick=do_submit();>
 <input id=TestRun class="btn btn-info"  type=button value="<?php echo $MSG_TR?>" onclick=do_test_run();><span  class="btn"  id=result>결과</span>
-<input type=reset  class="btn btn-danger" value="reset">
 </div>
 </form>
 
@@ -209,5 +178,29 @@ function resume(){
 </div>
 <?php require_once("oj-footer.php");?>
 <?php require_once("include-bottom.php");?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/ace.js"></script>
+<script>
+  var editor = ace.edit("source");
+  var textarea = $('textarea[name="source"]').hide();
+  editor.getSession().setValue(textarea.val());
+  editor.getSession().on('change', function() {
+    textarea.val(editor.getSession().getValue());
+  });
+  editor.setTheme("ace/theme/monokai");
+  editor.setOptions({
+    "minLines" : 20,
+    "maxLines" : Infinity,
+    "fontSize" : 14
+  });
+  editor.commands.removeCommand('find');
+  editor.commands.removeCommand('replace');
+  var changeMode = function() {
+    var language = $("#language option:selected").text().toLowerCase();
+    if (language == "c++" || language == "c") language = "c_cpp";
+    editor.getSession().setMode("ace/mode/" + language);
+  };
+  $("#language").change(changeMode);
+  changeMode();
+</script>
 </body>
 </html>
