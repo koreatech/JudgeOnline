@@ -4,8 +4,6 @@
   <title><?php echo $view_title?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <?php require_once("./template/".$OJ_TEMPLATE."/include-header.php");?>
-  <link href='highlight/styles/shCore.css' rel='stylesheet' type='text/css'/>
-  <link href='highlight/styles/shThemeDefault.css' rel='stylesheet' type='text/css'/>
 <style type="text/css" media="screen">
     #editor { 
         top: 0;
@@ -22,63 +20,63 @@
 
 <div class="container">
 
-<script src='highlight/scripts/shCore.js' type='text/javascript'></script>
-<script src='highlight/scripts/shBrushCpp.js' type='text/javascript'></script>
-<script src='highlight/scripts/shBrushCss.js' type='text/javascript'></script>
-<script src='highlight/scripts/shBrushJava.js' type='text/javascript'></script>
-<script src='highlight/scripts/shBrushDelphi.js' type='text/javascript'></script>
-<script src='highlight/scripts/shBrushRuby.js' type='text/javascript'></script>
-<script src='highlight/scripts/shBrushBash.js' type='text/javascript'></script>
-<script src='highlight/scripts/shBrushPython.js' type='text/javascript'></script>
-<script src='highlight/scripts/shBrushPhp.js' type='text/javascript'></script>
-<script src='highlight/scripts/shBrushPerl.js' type='text/javascript'></script>
-<script src='highlight/scripts/shBrushCSharp.js' type='text/javascript'></script>
-<script src='highlight/scripts/shBrushVb.js' type='text/javascript'></script>
-
-<script language='javascript'>
-SyntaxHighlighter.config.bloggerMode = false;
-SyntaxHighlighter.config.clipboardSwf = 'highlight/scripts/clipboard.swf';
-SyntaxHighlighter.all();
-</script>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><?php echo $MSG_RUNID?></th>
+      <th><?php echo $MSG_USER?></th>
+      <th><?php echo $MSG_PROBLEM?></th>
+      <th><?php echo $MSG_RESULT?></th>
+      <th><?php echo $MSG_MEMORY?></th>
+      <th><?php echo $MSG_TIME?></th>
+      <th><?php echo $MSG_LANG?></th>
+      <th><?php echo $MSG_CODE_LENGTH?></th>
+      <th><?php echo $MSG_SUBMIT_TIME?></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><?php echo $id?></td>
+      <td><?php echo $suser_id?></td>
+      <td><?php echo $sproblem_id?></td>
+      <td><?php echo $judge_result[$sresult]?></td>
+      <td><?php echo $smemory?></td>
+      <td><?php echo $stime?></td>
+      <td><?php echo $language_name[$slanguage]?></td>
+      <td><?php echo $scode_length?></td>
+      <td><?php echo $scode_date?></td>
+    </tr>
+  </tbody>
+</table>
 <?php
 if ($ok==true){
   if($view_user_id!=$_SESSION['user_id'])
     echo "<a href='mail.php?to_user=$view_user_id&title=$MSG_SUBMIT $id'>Mail the auther</a>";
-  $brush=strtolower($language_name[$slanguage]);
-  if ($brush=='pascal') $brush='delphi';
-  if ($brush=='obj-c') $brush='c';
-  if ($brush=='freebasic') $brush='vb';
-  echo "<pre class=\"brush:".$brush.";\" id='main'>";
-  ob_start();
-  echo "/**************************************************************\n";
-  echo "\tProblem: $sproblem_id\n\tUser: $suser_id\n";
-  echo "\tLanguage: ".$language_name[$slanguage]."\n\tResult: ".$judge_result[$sresult]."\n";
-  if ($sresult==4){
-    echo "\tTime:".$stime." ms\n";
-    echo "\tMemory:".$smemory." kb\n";
-  }
-  echo "****************************************************************/\n\n";
-  $auth=ob_get_contents();
-  ob_end_clean();
-
-  echo htmlspecialchars(str_replace("\n\r","\n",$view_source))."\n".$auth."</pre>";
-
-  //ace test
-  echo "<div id='editor'>";
-  echo htmlspecialchars(str_replace("\n\r","\n",$view_source))."\n".$auth;
-  echo "</div>";
+  echo "<div id='editor'><pre>";
+  echo htmlspecialchars(str_replace("\n\r","\n",$view_source));
+  echo "</pre></div>";
 
 }else{
-
-  echo "I am sorry, You could not view this code!";
+  echo "죄송하지만, 이 코드를 볼 수 없습니다.";
 }
 ?>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/ace.js"></script>
 <script>
+<?php
+$ace_editor_language = strtolower($language_name[$slanguage]);
+if($ace_editor_language == "c" || $ace_editor_language == "c++") {
+  $ace_editor_language = "c_cpp";
+}
+?>
   var editor = ace.edit("editor");
   editor.setTheme("ace/theme/monokai");
-  editor.getSession().setMode("ace/mode/c_cpp");
+  editor.getSession().setMode("ace/mode/<?php echo $ace_editor_language;?>");
+  editor.setReadOnly(true);
+  editor.setOptions({
+    "maxLines" : Infinity,
+    "fontSize" : 14
+  });
 </script>
 <?php require_once("oj-footer.php");?>
 <?php require_once("include-bottom.php");?>

@@ -17,7 +17,7 @@
 <?php require_once("oj-footer.php");?>
 <?php require_once("include-bottom.php");?>
 <script>
- $("#source").load("showsource.php?id=<?php echo $id?> #main");
+ $("#source").load("showsource.php?id=<?php echo $id?> #editor");
 </script>
 </body>
 </html>
