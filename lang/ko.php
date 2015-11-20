@@ -29,7 +29,7 @@
   $MSG_Memory_Limit_Exceed="메모리 초과";
   $MSG_Output_Limit_Exceed="출력이 너무 많음";
   $MSG_Runtime_Error="실행 에러";
-  $MSG_TEST_RUN="테스트";
+  $MSG_TEST_RUN="테스트 실행";
   $MSG_Compile_Error="컴파일 에러";
   $MSG_Compile_OK="컴파일 성공";
   $MSG_RUNID="#";

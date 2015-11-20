@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
   require_once("./template/$OJ_TEMPLATE/contest-header.php");
 }
 ?>
-<div class='container'>
+<div class="container">
 <?php
 $problem_tab = "submitpage";
 require_once("./template/$OJ_TEMPLATE/problem-header.php");
@@ -22,7 +22,7 @@ $OJ_EDITE_AREA=false;
 
 ?>
 
-<form id=frmSolution action="submit.php" method="post">
+<form id="frmSolution" action="submit.php" method="post">
 <?php if (isset($id)){?>
 <input id=problem_id type='hidden'  value='<?php echo $id?>' name="id"><br>
 <?php }else{
@@ -30,8 +30,7 @@ $OJ_EDITE_AREA=false;
 <input id="cid" type='hidden' value='<?php echo $cid?>' name="cid">
 <input id="pid" type='hidden' value='<?php echo $pid?>' name="pid"><br>
 <?php }?>
-Language:
-<select id="language" name="language">
+<select id="language" name="language" class="form-control">
 <?php
   $lang_count=count($language_ext);
 
@@ -51,20 +50,21 @@ Language:
 <br>
 <div id="source"></div>
 <textarea name="source"><?php echo $view_src?></textarea><br>
-<div class='text-center'>
-<?php echo $MSG_Input?>:<textarea style="width:40%" cols=40 rows=5 id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
-<?php echo $MSG_Output?>:
-  <textarea style="width:40%" cols=40 rows=5 id="out" name="out" >SHOULD BE:
+<div class="text-right">
+<button id="Submit" class="btn btn-primary" onclick=do_submit();><?php echo $MSG_SUBMIT?></button>
+</div>
+<?php echo $MSG_Input?>
+<textarea class="form-control col-md-12" id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
+<div class="text-right">
+<button id="TestRun" class="btn btn-default"  type="button" onclick=do_test_run();><?php echo $MSG_TEST_RUN?></button>
+</div>
+<?php echo $MSG_Output?> <span  class="text"  id=result></span>
+  <textarea class="form-control col-md-12" id="out" name="out" >SHOULD BE:
 <?php echo $view_sample_output?>
 </textarea>
-
-<br>
-<input id=Submit class="btn btn-info" type=button value="<?php echo $MSG_SUBMIT?>"  onclick=do_submit();>
-<input id=TestRun class="btn btn-info"  type=button value="<?php echo $MSG_TR?>" onclick=do_test_run();><span  class="btn"  id=result>결과</span>
-</div>
 </form>
 
-<iframe name=testRun width=0 height=0 src="about:blank"></iframe>
+<iframe name=testRun width=0 height=0 src="about:blank" style="visibility: hidden"></iframe>
   <script>
   var sid=0;
   var i=0;
@@ -98,9 +98,9 @@ function fresh_result(solution_id) {
       var tag="span";
       if(ra[0]<4) tag="span disabled=true";
       else tag="a";
-      tb.innerHTML="<"+tag+" href='reinfo.php?sid="+solution_id+"' class='badge badge-info' target=_blank>"+judge_result[ra[0]]+"</"+tag+">";
+      tb.innerHTML="<"+tag+" href='reinfo.php?sid="+solution_id+"' class='badge badge-info' target=_blank>"+judge_result[ra[0]]+"</"+tag+"> ";
       if(ra[0]<4)tb.innerHTML+=loader;
-      tb.innerHTML+="Memory:"+ra[1]+"kb&nbsp;&nbsp;";
+      tb.innerHTML+=" Memory:"+ra[1]+"kb&nbsp;&nbsp;";
       tb.innerHTML+="Time:"+ra[2]+"ms";
       if(ra[0]<4)
         window.setTimeout("fresh_result("+solution_id+")",2000);
@@ -162,15 +162,15 @@ function resume(){
   if(count<0){
     s.disabled=false;
     t.disabled=false;
-    s.value="<?php echo $MSG_SUBMIT?>";
-    t.value="<?php echo $MSG_TR?>";
+    s.textContent="<?php echo $MSG_SUBMIT?>";
+    t.textContent="<?php echo $MSG_TR?>";
     if (handler_interval) {
       window.clearInterval(handler_interval);
     }
     handler_interval = false;
   } else {
-    s.value="<?php echo $MSG_SUBMIT?>("+count+")";
-    t.value="<?php echo $MSG_TR?>("+count+")";
+    s.textContent="<?php echo $MSG_SUBMIT?> ("+count+")";
+    t.textContent="<?php echo $MSG_TR?> ("+count+")";
     handler_interval = window.setTimeout("resume();",1000);
   }
 }
