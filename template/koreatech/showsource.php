@@ -56,7 +56,7 @@ if ($ok==true){
 }
 ?>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/ace.js"></script>
+<script src="/ace/src/ace.js"></script>
 <script>
   var editor = ace.edit("editor");
   editor.setTheme("ace/theme/monokai");

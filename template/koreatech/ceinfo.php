@@ -16,7 +16,7 @@
 </div>
 <?php require_once("oj-footer.php");?>
 <?php require_once("include-bottom.php");?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/ace.js"></script>
+<script src="/ace/src/ace.js"></script>
 <script>
 <?php
 $ace_editor_language = strtolower($language_name[$slanguage]);
