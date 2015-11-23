@@ -55,6 +55,7 @@ $OJ_EDITE_AREA=false;
 </div>
 <?php echo $MSG_Input?>
 <textarea class="form-control col-md-12" id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
+<br>
 <div class="text-right">
 <button id="TestRun" class="btn btn-default"  type="button" onclick=do_test_run();><?php echo $MSG_TEST_RUN?></button>
 </div>
