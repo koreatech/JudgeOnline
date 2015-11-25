@@ -27,7 +27,7 @@
   <tbody>
     <tr>
       <td><?php echo $id?></td>
-      <td><?php echo $suser_id?></td>
+      <td><a href='userinfo.php?user=<?php echo $suser_id?>'><?php echo $suser_id?></a></td>
       <td><?php echo $sproblem_id?></td>
       <td><?php echo $judge_result[$sresult]?></td>
       <td><?php echo $smemory?></td>
