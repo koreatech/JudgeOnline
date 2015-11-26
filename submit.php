@@ -104,6 +104,9 @@ if(get_magic_quotes_gpc()){
 
 }
 $input_text=preg_replace ( "(\r\n)", "\n", $input_text );
+
+$len=strlen($source);
+
 $source=mysql_real_escape_string($source);
 $input_text=mysql_real_escape_string($input_text);
 //$source=trim($source);
@@ -113,13 +116,6 @@ if(isset($OJ_APPENDCODE)&&$OJ_APPENDCODE&&file_exists($append_file)){
   $source.=mysql_real_escape_string("\n".file_get_contents($append_file));
 }
 //end of append 
-
-
-$len=strlen($source);
-//echo $source;
-
-
-
 
 setcookie('lastlang',$language,time()+360000);
 
