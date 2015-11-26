@@ -117,6 +117,7 @@ if(isset($OJ_APPENDCODE)&&$OJ_APPENDCODE&&file_exists($append_file)){
 }
 //end of append 
 
+
 setcookie('lastlang',$language,time()+360000);
 
 $ip=$_SERVER['REMOTE_ADDR'];
@@ -126,7 +127,7 @@ if ($len<2){
   require("template/".$OJ_TEMPLATE."/error.php");
   exit(0);
 }
-if ($len>65536){
+if (strlen($source)>65536){
   $view_errors="Code too long!<br>";
   require("template/".$OJ_TEMPLATE."/error.php");
   exit(0);
