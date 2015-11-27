@@ -54,13 +54,13 @@ $OJ_EDITE_AREA=false;
 <button id="Submit" class="btn btn-primary" onclick=do_submit();><?php echo $MSG_SUBMIT?></button>
 </div>
 <?php echo $MSG_Input?>
-<textarea class="form-control col-md-12" id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
+<textarea class="form-control col-md-12" rows="5" id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
 <br>
 <div class="text-right">
 <button id="TestRun" class="btn btn-default"  type="button" onclick=do_test_run();><?php echo $MSG_TEST_RUN?></button>
 </div>
 <?php echo $MSG_Output?> <span  class="text"  id=result></span>
-  <textarea class="form-control col-md-12" id="out" name="out" >SHOULD BE:
+  <textarea class="form-control col-md-12" rows="5" id="out" name="out" >SHOULD BE:
 <?php echo $view_sample_output?>
 </textarea>
 </form>
