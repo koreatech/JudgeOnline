@@ -118,4 +118,3 @@
   $MSG_LeftTime="남은시간";
   $MSG_Ended="종료";
 ?>
-
