@@ -312,16 +312,6 @@ for ($i=0;$i<$rows_cnt;$i++){
 }
 if(!$OJ_MEMCACHE)mysql_free_result($result);
 
-
-
-
-
-
-
-
-?>
-
-<?php
 /////////////////////////Template
 require("template/".$OJ_TEMPLATE."/status.php");
 
