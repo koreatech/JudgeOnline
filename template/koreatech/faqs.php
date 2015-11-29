@@ -10,9 +10,6 @@
   require_once("oj-header.php");
 ?>
 <div class="container">
-<div class="row text-center">
-  <h2>자주 묻는 질문</h2>
-</div>
 <p>
   <font color=green>Q</font> 온라인 채점의 실행 환경, 컴파일러와 옵션은 무엇인가요?<br>
   <font color=red>A</font> 온라인 채점은 <a href="http://www.ubuntu.com/">Ubuntu Linux</a> 에서 돌고 있습니다. C/C++로는 <a href="http://gcc.gnu.org/">GNU GCC/G++</a> 를 사용하고 있고, 자바는 <a href="http://www.oracle.com/technetwork/java/index.html">sun-java-jdk1.8</a> 를 사용합니다. 자세한 컴파일 옵션은 아래와 같습니다.<br>
