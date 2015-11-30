@@ -57,20 +57,13 @@ while($row=mysql_fetch_array($result)){
 }
 mysql_free_result($result);
 
-//}
-
-?>
-
-
-<?php $pagemin=0; $pagemax=intval(($acuser-1)/20);
+$pagemin=0; $pagemax=intval(($acuser-1)/20);
 
 if ($page<$pagemin) $page=$pagemin;
 if ($page>$pagemax) $page=$pagemax;
 $start=$page*20;
 $sz=20;
 if ($start+$sz>$acuser) $sz=$acuser-$start;
-
-
 
 // check whether the problem in a contest
 $now=strftime("%Y-%m-%d %H:%M",time());
@@ -175,4 +168,3 @@ require("template/".$OJ_TEMPLATE."/problemstatus.php");
 if(file_exists('./include/cache_end.php'))
   require_once('./include/cache_end.php');
 ?>
-
