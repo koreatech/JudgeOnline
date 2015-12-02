@@ -21,10 +21,10 @@ require_once("oj-header.php");
     </form>
   </div>
   <div class="col-sm-6 text-right">
-    <a class="btn btn-link" href="ranklist.php?scope=d">Day</a>
-    <a class="btn btn-link" href="ranklist.php?scope=w">Week</a>
-    <a class="btn btn-link" href="ranklist.php?scope=m">Month</a>
-    <a class="btn btn-link" href="ranklist.php?scope=y">Year</a>
+    <a class="btn btn-link" href="ranklist.php?scope=d">오늘</a>
+    <a class="btn btn-link" href="ranklist.php?scope=w">이번주</a>
+    <a class="btn btn-link" href="ranklist.php?scope=m">이번달</a>
+    <a class="btn btn-link" href="ranklist.php?scope=y">올해</a>
   </div>
 </div>
 <div class="container">
