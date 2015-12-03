@@ -15,8 +15,8 @@ if ($scope != "" && $scope != 'd' && $scope != 'w' && $scope != 'm') {
 }
 
 $rank = 0;
-if (isset( $_GET ['start'] )) {
-  $rank = intval ( $_GET ['start'] );
+if (isset($_GET['start'])) {
+  $rank = intval($_GET['start']);
 }
 
 if (isset($OJ_LANG)) {
@@ -28,7 +28,7 @@ if ($rank < 0) {
   $rank = 0;
 }
 
-$sql = "SELECT `user_id`,`nick`,`solved`,`submit` FROM `users` WHERE `submit` > 1 ORDER BY `solved` DESC,submit,reg_time  LIMIT  " . strval ( $rank ) . ",$page_size";
+$sql = "SELECT `user_id`,`nick`,`solved`,`submit` FROM `users` WHERE `submit` > 1 ORDER BY `solved` DESC, `submit`, `reg_time` LIMIT ".strval($rank).",$page_size";
 
 if ($scope) {
   $s = "";
@@ -38,7 +38,6 @@ if ($scope) {
     break;
   case 'w':
     $monday = mktime(0, 0, 0, date("m"),date("d")-(date("w")+7)%8+1, date("Y"));
-    //$monday->subDays(date('w'));
     $s = strftime("%Y-%m-%d",$monday);
     break;
   case 'm':
@@ -47,19 +46,14 @@ if ($scope) {
   default :
     $s = date('Y').'-01-01';
   }
-  //echo $s."<-------------------------";
   $sql = "SELECT users.`user_id`,`nick`,s.`solved`,t.`submit` FROM `users`
     right join
-    (select count(distinct problem_id) solved ,user_id from solution where in_date>str_to_date('$s','%Y-%m-%d') and result=4 group by user_id order by solved desc limit " . strval ( $rank ) . ",$page_size) s on users.user_id=s.user_id
+    (select count(distinct problem_id) `solved`, `user_id` from solution where in_date > str_to_date('$s','%Y-%m-%d') and result = 4 group by user_id order by solved desc limit ".strval($rank).", $page_size) s on users.user_id = s.user_id
     left join
-    (select count( problem_id) submit ,user_id from solution where in_date>str_to_date('$s','%Y-%m-%d') group by user_id order by submit desc limit " . strval ( $rank ) . ",".($page_size*2).") t on users.user_id=t.user_id
-    ORDER BY s.`solved` DESC,t.submit,reg_time  LIMIT  0,50
-    ";
-  //                      echo $sql;
+    (select count(problem_id) `submit`, `user_id` from solution where in_date > str_to_date('$s','%Y-%m-%d') group by user_id order by submit desc limit ".strval($rank).", ".($page_size*2).") t on users.user_id = t.user_id
+    ORDER BY s.`solved` DESC, t.submit, reg_time LIMIT 0,50";
 }
 
-
-//         $result = mysql_query ( $sql ); //mysql_error();
 if ($OJ_MEMCACHE) {
   require("./include/memcache.php");
   $result = mysql_query_cache($sql) ;//or die("Error! ".mysql_error());
@@ -84,10 +78,10 @@ for ($i = 0; $i < $rows_cnt; $i++) {
   $rank++;
 
   $view_rank[$i][0] = $rank;
-  $view_rank[$i][1] = "<div class=center><a href='userinfo.php?user=" . $row['user_id'] . "                                                            '>" . $row['user_id'] . "</a>" ."</div>";
-  $view_rank[$i][2] = "<div class=center>" . htmlspecialchars ( $row['nick'] ) ."</div>";
-  $view_rank[$i][3] = "<div class=center><a href='status.php?user_id=" . $row['user_id'] .                                                             "&jresult=4'>" . $row['solved'] . "</a>" ."</div>";
-  $view_rank[$i][4] = "<div class=center><a href='status.php?user_id=" . $row['user_id'] .                                                             "'>" . $row['submit'] . "</a>" ."</div>";
+  $view_rank[$i][1] = "<div class=center><a href='userinfo.php?user=".$row['user_id']."'>".$row['user_id']."</a>"."</div>";
+  $view_rank[$i][2] = "<div class=center>".htmlspecialchars($row['nick'])."</div>";
+  $view_rank[$i][3] = "<div class=center><a href='status.php?user_id=".$row['user_id']."&jresult=4'>".$row['solved']."</a>"."</div>";
+  $view_rank[$i][4] = "<div class=center><a href='status.php?user_id=".$row['user_id']."'>".$row['submit']."</a>"."</div>";
 
   if ($row['submit'] == 0) {
     $view_rank[$i][5] = "0.000%";
@@ -99,7 +93,6 @@ for ($i = 0; $i < $rows_cnt; $i++) {
 if (!$OJ_MEMCACHE) mysql_free_result($result);
 
 $sql = "SELECT count(1) as `mycount` FROM `users` WHERE `submit` >= 1";
-//        $result = mysql_query ( $sql );
 if ($OJ_MEMCACHE) {
   // require("./include/memcache.php");
   $result = mysql_query_cache($sql);// or die("Error! ".mysql_error());
@@ -122,12 +115,11 @@ if ($OJ_MEMCACHE) {
 } else {
   $row = mysql_fetch_array($result);
 }
-echo mysql_error ();
-// $row = mysql_fetch_object ( $result );
+
+echo mysql_error();
 $view_total = $row['mycount'];
 
 // mysql_free_result ( $result );
-
 if (!$OJ_MEMCACHE) {
   mysql_free_result($result);
 }
