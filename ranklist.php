@@ -29,7 +29,7 @@ if ($rank < 0) {
 }
 
 $sql = "SELECT `user_id`,`nick`,`solved`,`submit` FROM `users` WHERE `submit` > 1 ORDER BY `solved` DESC, `submit`, `reg_time` LIMIT ".strval($rank).",$page_size";
-
+$view_total_sql = "SELECT count(1) as `mycount` FROM `users` WHERE `submit` >= 1";
 if ($scope) {
   $s = "";
   switch ($scope) {
@@ -52,6 +52,12 @@ if ($scope) {
     left join
     (select count(problem_id) `submit`, `user_id` from solution where in_date > str_to_date('$s','%Y-%m-%d') group by user_id order by submit desc limit ".strval($rank).", ".($page_size*2).") t on users.user_id = t.user_id
     ORDER BY s.`solved` DESC, t.submit, reg_time LIMIT 0,50";
+
+  $view_total_sql = "SELECT count(1) as `mycount` FROM `users`
+    right join
+    (select count(distinct problem_id) `solved`, `user_id` from solution where in_date > str_to_date('$s','%Y-%m-%d') and result = 4 group by user_id) s on users.user_id = s.user_id
+    left join
+    (select count(problem_id) `submit`, `user_id` from solution where in_date > str_to_date('$s','%Y-%m-%d') group by user_id) t on users.user_id = t.user_id";
 }
 
 if ($OJ_MEMCACHE) {
@@ -92,17 +98,16 @@ for ($i = 0; $i < $rows_cnt; $i++) {
 
 if (!$OJ_MEMCACHE) mysql_free_result($result);
 
-$sql = "SELECT count(1) as `mycount` FROM `users` WHERE `submit` >= 1";
 if ($OJ_MEMCACHE) {
   // require("./include/memcache.php");
-  $result = mysql_query_cache($sql);// or die("Error! ".mysql_error());
+  $result = mysql_query_cache($view_total_sql);// or die("Error! ".mysql_error());
   if ($result) {
     $rows_cnt = count($result);
   } else {
     $rows_cnt = 0;
   }
 } else {
-  $result = mysql_query($sql);// or die("Error! ".mysql_error());
+  $result = mysql_query($view_total_sql);// or die("Error! ".mysql_error());
   if ($result) {
     $rows_cnt = mysql_num_rows($result);
   } else {
