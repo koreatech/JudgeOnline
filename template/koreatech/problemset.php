@@ -25,11 +25,11 @@ require_once("oj-header.php");
   <div class="col-md-12"><div class="table-responsive">
   <table id='problemset' class='table table-hover table-striped'>
     <thead>
-      <tr class='toprow'>
-        <th width='120'><?php echo $MSG_PROBLEM_ID?></th>
+      <tr>
+        <th width="120"><?php echo $MSG_PROBLEM_ID?></th>
         <th><?php echo $MSG_TITLE?></th>
-        <th style="cursor:hand"  width=60 ><?php echo $MSG_AC?></th>
-        <th style="cursor:hand" width=60 ><?php echo $MSG_SUBMIT?></th>
+        <th width="60" ><?php echo $MSG_AC?></th>
+        <th width="60" ><?php echo $MSG_SUBMIT?></th>
       </tr>
     </thead>
     <tbody>
@@ -37,9 +37,7 @@ require_once("oj-header.php");
 foreach ($view_problemset as $row) {
 ?>
       <tr>
-        <td>
-          <?php echo $row[1]?>
-        </td>
+        <td><?php echo $row[1]?></td>
         <td>
 <?php
 if (strcmp($row[0], "success") == 0) {
@@ -54,12 +52,8 @@ if (strcmp($row[0], "success") == 0) {
 ?>
           <a href="problem.php?id=<?php echo $row[1]?>"><?php echo $row[2]?></a>
         </td>
-        <td>
-          <a href="status.php?problem_id=<?php echo $row[1]?>&jresult=4"><?php echo $row[3]?></a>
-        </td>
-        <td>
-          <a href="status.php?problem_id=<?php echo $row[1]?>"><?php echo $row[4]?></a>
-        </td>
+        <td><a href="status.php?problem_id=<?php echo $row[1]?>&jresult=4"><?php echo $row[3]?></a></td>
+        <td><a href="status.php?problem_id=<?php echo $row[1]?>"><?php echo $row[4]?></a></td>
       </tr>
 <?php
 }
