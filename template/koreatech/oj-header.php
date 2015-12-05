@@ -17,7 +17,7 @@
         <li <?php if ($navigation_tab == "contest") echo "class='active'"?>><a href="contest.php"><?php echo $MSG_CONTEST?></a></li>
         <li <?php if ($navigation_tab == "faqs") echo "class='active'"?>><a href="faqs.php"><?php echo $MSG_FAQ?></a></li>
       </ul>
-      <?php require_once("./template/".$OJ_TEMPLATE."/user-header.php"); ?>
+<?php require_once("./template/".$OJ_TEMPLATE."/user-header.php"); ?>
     </div>
   </div>
 </nav>
