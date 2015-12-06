@@ -7,8 +7,11 @@
 </head>
 <body>
   <?php require_once("oj-header.php");?>
+<?php
+$referrer = $_SERVER["HTTP_REFERER"];
+?>
   <div class="container">
-    <form class="form-horizontal" action="login.php" method="post">
+    <form class="form-horizontal" action="login.php?url=<?php echo urlencode($referrer);?>" method="post">
       <div class="form-group">
         <label for="inputUserId" class="col-sm-2 control-label"><?php echo $MSG_USER_ID?></label>
         <div class="col-sm-10">

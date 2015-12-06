@@ -1,6 +1,7 @@
 <?php
 require_once("./include/db_info.inc.php");
 $vcode=trim($_POST['vcode']);
+$nextUrl=trim($_POST['url']);
 if ($OJ_VCODE&&($vcode!= $_SESSION["vcode"]||$vcode==""||$vcode==null)) {
   echo "<script language='javascript'>\n";
   echo "alert('Verify Code Wrong!');\n";
@@ -29,7 +30,11 @@ if ($login) {
     $_SESSION[$row['rightstr']]=true;
   }
   echo "<script language='javascript'>\n";
-  echo "history.go(-2);\n";
+  if ($nextUrl) {
+    echo "location.href='$nextUrl';\n";
+  } else {
+    echo "history.go(-2);\n";
+  }
   echo "</script>";
 } else {
   echo "<script language='javascript'>\n";
