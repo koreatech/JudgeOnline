@@ -1,7 +1,7 @@
 <?php
 require_once("./include/db_info.inc.php");
 $vcode=trim($_POST['vcode']);
-$nextUrl=trim($_POST['url']);
+$nextUrl=trim($_GET['url']);
 if ($OJ_VCODE&&($vcode!= $_SESSION["vcode"]||$vcode==""||$vcode==null)) {
   echo "<script language='javascript'>\n";
   echo "alert('Verify Code Wrong!');\n";
