@@ -33,7 +33,7 @@ if ($login) {
   if ($nextUrl) {
     echo "location.href='$nextUrl';\n";
   } else {
-    echo "history.go(-2);\n";
+    echo "location.href='\\';\n";
   }
   echo "</script>";
 } else {

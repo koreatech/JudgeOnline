@@ -21,13 +21,13 @@ if (isset($_SESSION['user_id'])) {
 ?>
             <li role="separator" class="divider"></li>
             <!--li class="dropdown-header">Nav header</li-->
-            <li><a href="./logout.php"><?php echo($MSG_LOGOUT);?></a></li>
+            <li><a href="./logout.php?url=<?php echo urlencode($_SERVER["REQUEST_URI"])?>"><?php echo($MSG_LOGOUT);?></a></li>
           </ul>
         </li>
 <?php
 } else {
 ?>
-        <li><a href="./loginpage.php"><?php echo($MSG_LOGIN)?></a></li>
+        <li><a href="./loginpage.php?url=<?php echo urlencode($_SERVER["REQUEST_URI"])?>"><?php echo($MSG_LOGIN)?></a></li>
         <li><a href="./registerpage.php"><?php echo($MSG_REGISTER)?></a></li>
 <?php
 }
