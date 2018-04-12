@@ -5,7 +5,7 @@ $nextUrl=trim($_GET['url']);
 if ($OJ_VCODE&&($vcode!= $_SESSION["vcode"]||$vcode==""||$vcode==null)) {
   echo "<script language='javascript'>\n";
   echo "alert('Verify Code Wrong!');\n";
-  echo "history.go(-1);\n";
+  echo "location.href='loginpage.php';\n";
   echo "</script>";
   exit(0);
 }
@@ -39,7 +39,7 @@ if ($login) {
 } else {
   echo "<script language='javascript'>\n";
   echo "alert('UserName or Password Wrong!');\n";
-  echo "history.go(-1);\n";
+  echo "location.href='loginpage.php';\n";
   echo "</script>";
 }
 ?>
