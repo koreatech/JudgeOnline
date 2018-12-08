@@ -64,7 +64,7 @@ foreach($view_mail as $row){
   echo "<tr>";
   foreach($row as $table_cell){
     echo "<td>";
-    echo $table_cell;
+    echo htmlspecialchars($table_cell);
     echo "</td>";
   }
   echo "</tr>";
